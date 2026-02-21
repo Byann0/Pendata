@@ -1,4 +1,4 @@
-# Penambangan Data IF 4A
+# Penambangan Data
 
 Nama : Abyan Naufal Yunianto
 
