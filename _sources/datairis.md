@@ -7,7 +7,7 @@
 - Jumlah Sampel: 150 baris (data bunga). Berikut datanya :
 
 ```{code-cell}
-:tags: [hide-input]
+:tags: [hide-cell] python
 import pandas as pd
 
 df = pd.read_csv("IRIS.csv")
@@ -35,8 +35,8 @@ Deskripsi menggunakan aplikasi orange
 ![Grafik Data](/gambar/iris02.png)
 
 Berikut juga implementasi menggunakan python :
-```{code-cell}
-:tags: [hide-input]
+```{code-cell} python
+:tags: [hide-cell]
 import pandas as pd
 from scipy import stats
 
