@@ -17,8 +17,3 @@ Dalam data mining proses tahapan yang dilakukan sebagai Proses standar lintas in
 
 ![alt text](prosesdata.png)
 
-
-```{note}
-Here is a note
-```
-
