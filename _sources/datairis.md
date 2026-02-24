@@ -1,3 +1,17 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.11.5
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
 # Data Iris Flower
 
 ## Eksplorasi Data Iris
@@ -7,7 +21,7 @@
 - Jumlah Sampel: 150 baris (data bunga). Berikut datanya :
 
 ```{code-cell}
-:tags: [hide-cell] python
+:tags: [hide-input]
 import pandas as pd
 
 df = pd.read_csv("IRIS.csv")
@@ -35,8 +49,8 @@ Deskripsi menggunakan aplikasi orange
 ![Grafik Data](/gambar/iris02.png)
 
 Berikut juga implementasi menggunakan python :
-```{code-cell} python
-:tags: [hide-cell]
+```{code-cell}
+:tags: [hide-input]
 import pandas as pd
 from scipy import stats
 
