@@ -18,7 +18,7 @@ kernelspec:
 
 **Dataset Iris** adalah dataset legendaris dalam dunia statistik dan machine learning yang diperkenalkan oleh Ronald Fisher pada tahun 1936. Eksplorasi data (EDA) adalah langkah awal untuk memahami "pola" dari data tersebut sebelum kita melakukan analisis yang lebih dalam.
 
-- Jumlah Sampel: 150 baris (data bunga). Berikut datanya :
+- Jumlah Sampel: 150 baris (data bunga). Datanya seimbang, kalau tidak seimbang data bermasalah. Berikut datanya :
 
 ```{code-cell}
 :tags: [hide-input]
