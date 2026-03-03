@@ -1,6 +1,7 @@
 # Data Understanding
 
 Memahami data dimulai dengan mengumpulkan data awal dan dilanjutkan dengan dengan kegiatan-kegiatan untuk mendapatkan data yang lazim serta identifikasi data yang berkualitas, pemahaman data sangat diperlukan untuk mendeteksi bagian yang menarik dari data sehingga dapat membangun hipotesa terhadap informasi yang tersembunyi.
+1. kemampuan untuk menarik data(mampu mengambil data dari beberapa sumber)
 
 - **Mengumpulkan data awal**
 - **Mendeskripsikan data**

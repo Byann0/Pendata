@@ -7,4 +7,9 @@ chapters:
 - file: pengantardata
 - file: bussinessunderstand
 - file: datasunderstand
-- file: datairis
+  sections:
+  - file: datairis
+  - file: ukur_iris
+- file: mengukurjarak
+  sections:
+  - file: ukurdata_campuran

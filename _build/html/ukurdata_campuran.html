@@ -1,0 +1,961 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Pengukuran Jarak Data Campuran &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ukurdata_campuran';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Mengukur Jarak" href="mengukurjarak.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    My Notebook
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pengantardata.html">Pengantar Data Mining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bussinessunderstand.html">Business Understanding</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="datasunderstand.html">Data Understanding</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="datairis.html">Data Iris Flower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ukur_iris.html">Pengukuran Jarak (Dissimilarity Matrix)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="mengukurjarak.html">Mengukur Jarak</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Pengukuran Jarak Data Campuran</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fukurdata_campuran.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/ukurdata_campuran.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Pengukuran Jarak Data Campuran</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-data">Normalisasi Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-manhattan-distance-l-1">Implementasi Manhattan Distance (<span class="math notranslate nohighlight">\(L_1\)</span>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-euclidean-distance-l-2">Implementasi Euclidean Distance (<span class="math notranslate nohighlight">\(L_2\)</span>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menggabungkan-atribut-nominal">Menggabungkan Atribut Nominal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pengukuran-jarak-data-campuran">
+<h1>Pengukuran Jarak Data Campuran<a class="headerlink" href="#pengukuran-jarak-data-campuran" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.spatial.distance</span><span class="w"> </span><span class="kn">import</span> <span class="n">pdist</span><span class="p">,</span> <span class="n">squareform</span>
+
+<span class="c1"># Load data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;google_play_store_apps_famous.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Memilih 5 aplikasi pertama untuk simulasi matriks jarak</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;App&#39;</span><span class="p">,</span> <span class="s1">&#39;Category&#39;</span><span class="p">,</span> <span class="s1">&#39;Rating&#39;</span><span class="p">,</span> <span class="s1">&#39;Price_$&#39;</span><span class="p">,</span> <span class="s1">&#39;Content_Rating&#39;</span><span class="p">]</span>
+<span class="n">df_sample</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dataset Sampel:&quot;</span><span class="p">)</span>
+<span class="n">df_sample</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dataset Sampel:
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>App</th>
+      <th>Category</th>
+      <th>Rating</th>
+      <th>Price_$</th>
+      <th>Content_Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>App_1</td>
+      <td>HEALTH</td>
+      <td>3.7</td>
+      <td>1.99</td>
+      <td>Teen</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>App_2</td>
+      <td>LIFESTYLE</td>
+      <td>5.0</td>
+      <td>0.99</td>
+      <td>Mature 17+</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>App_3</td>
+      <td>ENTERTAINMENT</td>
+      <td>2.5</td>
+      <td>2.99</td>
+      <td>Teen</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>App_4</td>
+      <td>TOOLS</td>
+      <td>3.0</td>
+      <td>0.00</td>
+      <td>Everyone</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>App_5</td>
+      <td>HEALTH</td>
+      <td>3.5</td>
+      <td>2.99</td>
+      <td>Everyone</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="normalisasi-data">
+<h2>Normalisasi Data<a class="headerlink" href="#normalisasi-data" title="Link to this heading">#</a></h2>
+<p>kita tidak bisa langsung menghitung jarak jika tipe datanya berbeda. Kita harus melakukan Normalisasi agar semua nilai berada di rentang <span class="math notranslate nohighlight">\([0, 1]\)</span>.</p>
+<p><strong>A. Atribut Ordinal (Content_Rating)</strong>
+Sesuai instruksi di PPT, data ordinal harus diubah menjadi peringkat (rank), lalu dipetakan ke skala <span class="math notranslate nohighlight">\([0, 1]\)</span> dengan rumus:</p>
+<div class="math notranslate nohighlight">
+\[z_{if} = \frac{r_{if} - 1}{M_f - 1}\]</div>
+<p>Di mana <span class="math notranslate nohighlight">\(M_f\)</span> adalah peringkat tertinggi.</p>
+<p><strong>B. Atribut Numerik (Rating, Price_$)</strong>
+Data numerik harus dinormalisasi agar variabel dengan angka besar (seperti harga) tidak mendominasi variabel kecil (seperti rating).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menentukan(Pengubahan ordinal) urutan: Everyone &lt; Teen &lt; Mature 17+</span>
+<span class="n">rank_map</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Everyone&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Teen&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Mature 17+&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="n">df_sample</span><span class="p">[</span><span class="s1">&#39;Rank_Ordinal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_sample</span><span class="p">[</span><span class="s1">&#39;Content_Rating&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">rank_map</span><span class="p">)</span>
+
+<span class="c1"># Normalisasi Ordinal ke skala [0,1]</span>
+<span class="n">max_rank</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">df_sample</span><span class="p">[</span><span class="s1">&#39;Ordinal_Norm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_sample</span><span class="p">[</span><span class="s1">&#39;Rank_Ordinal&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">max_rank</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Menggunakan MinMaxScaler untuk mengubah data ke rentang [0, 1]</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+<span class="n">df_sample</span><span class="p">[[</span><span class="s1">&#39;Rating_Norm&#39;</span><span class="p">,</span> <span class="s1">&#39;Price_Norm&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_sample</span><span class="p">[[</span><span class="s1">&#39;Rating&#39;</span><span class="p">,</span> <span class="s1">&#39;Price_$&#39;</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hasil Transformasi ke Skala [0, 1]:&quot;</span><span class="p">)</span>
+<span class="n">df_sample</span><span class="p">[[</span><span class="s1">&#39;App&#39;</span><span class="p">,</span> <span class="s1">&#39;Rating_Norm&#39;</span><span class="p">,</span> <span class="s1">&#39;Price_Norm&#39;</span><span class="p">,</span> <span class="s1">&#39;Ordinal_Norm&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hasil Transformasi ke Skala [0, 1]:
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>App</th>
+      <th>Rating_Norm</th>
+      <th>Price_Norm</th>
+      <th>Ordinal_Norm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>App_1</td>
+      <td>0.48</td>
+      <td>0.665552</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>App_2</td>
+      <td>1.00</td>
+      <td>0.331104</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>App_3</td>
+      <td>0.00</td>
+      <td>1.000000</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>App_4</td>
+      <td>0.20</td>
+      <td>0.000000</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>App_5</td>
+      <td>0.40</td>
+      <td>1.000000</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="implementasi-manhattan-distance-l-1">
+<h2>Implementasi Manhattan Distance (<span class="math notranslate nohighlight">\(L_1\)</span>)<a class="headerlink" href="#implementasi-manhattan-distance-l-1" title="Link to this heading">#</a></h2>
+<p>Manhattan Distance (City Block) dihitung dengan menjumlahkan selisih absolut dari setiap atribut.$<span class="math notranslate nohighlight">\(d(i, j) = |x_{i1} - x_{j1}| + |x_{i2} - x_{j2}| + \dots + |x_{ip} - x_{jp}|\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mengambil fitur yang sudah dinormalisasi</span>
+<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Rating_Norm&#39;</span><span class="p">,</span> <span class="s1">&#39;Price_Norm&#39;</span><span class="p">,</span> <span class="s1">&#39;Ordinal_Norm&#39;</span><span class="p">]</span>
+<span class="n">data_matrix</span> <span class="o">=</span> <span class="n">df_sample</span><span class="p">[</span><span class="n">features</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c1"># Menghitung Manhattan Distance</span>
+<span class="n">dist_l1</span> <span class="o">=</span> <span class="n">pdist</span><span class="p">(</span><span class="n">data_matrix</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;cityblock&#39;</span><span class="p">)</span>
+
+<span class="c1"># Mengubah hasil menjadi Matriks Jarak </span>
+<span class="n">matrix_manhattan</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">squareform</span><span class="p">(</span><span class="n">dist_l1</span><span class="p">),</span> 
+                                <span class="n">columns</span><span class="o">=</span><span class="n">df_sample</span><span class="p">[</span><span class="s1">&#39;App&#39;</span><span class="p">],</span> 
+                                <span class="n">index</span><span class="o">=</span><span class="n">df_sample</span><span class="p">[</span><span class="s1">&#39;App&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matriks Jarak Manhattan:&quot;</span><span class="p">)</span>
+<span class="n">matrix_manhattan</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matriks Jarak Manhattan:
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>App</th>
+      <th>App_1</th>
+      <th>App_2</th>
+      <th>App_3</th>
+      <th>App_4</th>
+      <th>App_5</th>
+    </tr>
+    <tr>
+      <th>App</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>App_1</th>
+      <td>0.000000</td>
+      <td>1.354448</td>
+      <td>0.814448</td>
+      <td>1.445552</td>
+      <td>0.914448</td>
+    </tr>
+    <tr>
+      <th>App_2</th>
+      <td>1.354448</td>
+      <td>0.000000</td>
+      <td>2.168896</td>
+      <td>2.131104</td>
+      <td>2.268896</td>
+    </tr>
+    <tr>
+      <th>App_3</th>
+      <td>0.814448</td>
+      <td>2.168896</td>
+      <td>0.000000</td>
+      <td>1.700000</td>
+      <td>0.900000</td>
+    </tr>
+    <tr>
+      <th>App_4</th>
+      <td>1.445552</td>
+      <td>2.131104</td>
+      <td>1.700000</td>
+      <td>0.000000</td>
+      <td>1.200000</td>
+    </tr>
+    <tr>
+      <th>App_5</th>
+      <td>0.914448</td>
+      <td>2.268896</td>
+      <td>0.900000</td>
+      <td>1.200000</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="implementasi-euclidean-distance-l-2">
+<h2>Implementasi Euclidean Distance (<span class="math notranslate nohighlight">\(L_2\)</span>)<a class="headerlink" href="#implementasi-euclidean-distance-l-2" title="Link to this heading">#</a></h2>
+<p>Euclidean Distance adalah jarak “garis lurus” antar dua titik di ruang multidimensi.$<span class="math notranslate nohighlight">\(d(i, j) = \sqrt{(x_{i1} - x_{j1})^2 + (x_{i2} - x_{j2})^2 + \dots + (x_{ip} - x_{jp})^2}\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menghitung Euclidean Distance</span>
+<span class="n">dist_l2</span> <span class="o">=</span> <span class="n">pdist</span><span class="p">(</span><span class="n">data_matrix</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">)</span>
+
+<span class="c1"># Mengubah hasil menjadi Matriks Jarak</span>
+<span class="n">matrix_euclidean</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">squareform</span><span class="p">(</span><span class="n">dist_l2</span><span class="p">),</span> 
+                                <span class="n">columns</span><span class="o">=</span><span class="n">df_sample</span><span class="p">[</span><span class="s1">&#39;App&#39;</span><span class="p">],</span> 
+                                <span class="n">index</span><span class="o">=</span><span class="n">df_sample</span><span class="p">[</span><span class="s1">&#39;App&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matriks Jarak Euclidean:&quot;</span><span class="p">)</span>
+<span class="n">matrix_euclidean</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matriks Jarak Euclidean:
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>App</th>
+      <th>App_1</th>
+      <th>App_2</th>
+      <th>App_3</th>
+      <th>App_4</th>
+      <th>App_5</th>
+    </tr>
+    <tr>
+      <th>App</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>App_1</th>
+      <td>0.000000</td>
+      <td>0.795145</td>
+      <td>0.585026</td>
+      <td>0.878271</td>
+      <td>0.606841</td>
+    </tr>
+    <tr>
+      <th>App_2</th>
+      <td>0.795145</td>
+      <td>0.000000</td>
+      <td>1.302852</td>
+      <td>1.322736</td>
+      <td>1.344404</td>
+    </tr>
+    <tr>
+      <th>App_3</th>
+      <td>0.585026</td>
+      <td>1.302852</td>
+      <td>0.000000</td>
+      <td>1.135782</td>
+      <td>0.640312</td>
+    </tr>
+    <tr>
+      <th>App_4</th>
+      <td>0.878271</td>
+      <td>1.322736</td>
+      <td>1.135782</td>
+      <td>0.000000</td>
+      <td>1.019804</td>
+    </tr>
+    <tr>
+      <th>App_5</th>
+      <td>0.606841</td>
+      <td>1.344404</td>
+      <td>0.640312</td>
+      <td>1.019804</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="menggabungkan-atribut-nominal">
+<h2>Menggabungkan Atribut Nominal<a class="headerlink" href="#menggabungkan-atribut-nominal" title="Link to this heading">#</a></h2>
+<p>Untuk menghitung jarak total pada Atribut Campuran, PPT menyarankan penggunaan pembobotan. Untuk atribut Nominal (Category), jika nilainya sama maka jaraknya <span class="math notranslate nohighlight">\(0\)</span>, jika berbeda jaraknya <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">hitung_jarak_campuran</span><span class="p">(</span><span class="n">idx1</span><span class="p">,</span> <span class="n">idx2</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+    <span class="c1"># Jarak Nominal (Kategori)</span>
+    <span class="n">d_nominal</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx1</span><span class="p">,</span> <span class="s1">&#39;Category&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx2</span><span class="p">,</span> <span class="s1">&#39;Category&#39;</span><span class="p">]</span> <span class="k">else</span> <span class="mi">1</span>
+    
+    <span class="c1"># Jarak Numerik &amp; Ordinal (Manhattan)</span>
+    <span class="c1"># Kita ambil selisih dari kolom yang sudah dinormalisasi</span>
+    <span class="n">dist_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx1</span><span class="p">,</span> <span class="n">features</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx2</span><span class="p">,</span> <span class="n">features</span><span class="p">])</span>
+    <span class="n">d_others</span> <span class="o">=</span> <span class="n">dist_vals</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    
+    <span class="c1"># Rata-rata Jarak</span>
+    <span class="c1"># Total atribut = 1 (nominal) + 3 (numerik/ordinal) = 4</span>
+    <span class="n">jarak_total</span> <span class="o">=</span> <span class="p">(</span><span class="n">d_nominal</span> <span class="o">+</span> <span class="n">d_others</span><span class="p">)</span> <span class="o">/</span> <span class="mi">4</span>
+    <span class="k">return</span> <span class="n">jarak_total</span>
+
+<span class="c1"># Contoh: Hitung jarak antara App_1 dan App_2</span>
+<span class="n">hasil_campuran</span> <span class="o">=</span> <span class="n">hitung_jarak_campuran</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">df_sample</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jarak Campuran Total (Gower) antara </span><span class="si">{</span><span class="n">df_sample</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;App&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> dan </span><span class="si">{</span><span class="n">df_sample</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;App&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">hasil_campuran</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jarak Campuran Total (Gower) antara App_1 dan App_2: 0.5886
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="kesimpulan">
+<h2>Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Matriks Jarak: Hasil di atas menunjukkan tingkat ketidaksamaan (dissimilarity). Nilai 0 pada diagonal menunjukkan bahwa objek tersebut identik.</p></li>
+<li><p>Manhattan vs Euclidean: Manhattan memberikan bobot yang lebih linear pada perbedaan setiap atribut, sedangkan Euclidean memberikan penalti lebih besar pada perbedaan yang ekstrim karena adanya pangkat dua.</p></li>
+<li><p>Normalisasi: Tanpa normalisasi di langkah ke-2, hasil perhitungan akan salah karena skala angka yang tidak seimbang.</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="mengukurjarak.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Mengukur Jarak</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-data">Normalisasi Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-manhattan-distance-l-1">Implementasi Manhattan Distance (<span class="math notranslate nohighlight">\(L_1\)</span>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-euclidean-distance-l-2">Implementasi Euclidean Distance (<span class="math notranslate nohighlight">\(L_2\)</span>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menggabungkan-atribut-nominal">Menggabungkan Atribut Nominal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
