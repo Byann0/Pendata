@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Data Understanding &#8212; My sample book</title>
+    <title>Mengukur Jarak &#8212; My sample book</title>
   
   
   
@@ -59,11 +59,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'datasunderstand';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'mengukurjarak';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Data Iris Flower" href="datairis.html" />
-    <link rel="prev" title="Business Understanding" href="bussinessunderstand.html" />
+    <link rel="next" title="Pengukuran Jarak Data Campuran" href="ukurdata_campuran.html" />
+    <link rel="prev" title="Pengukuran Jarak (Dissimilarity Matrix)" href="ukur_iris.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -184,12 +184,12 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="pengantardata.html">Pengantar Data Mining</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bussinessunderstand.html">Business Understanding</a></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Data Understanding</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="datasunderstand.html">Data Understanding</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="datairis.html">Data Iris Flower</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ukur_iris.html">Pengukuran Jarak (Dissimilarity Matrix)</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="mengukurjarak.html">Mengukur Jarak</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Mengukur Jarak</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="ukurdata_campuran.html">Pengukuran Jarak Data Campuran</a></li>
 </ul>
 </details></li>
@@ -264,7 +264,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdatasunderstand.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmengukurjarak.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -294,7 +294,7 @@
       
       
       
-      <li><a href="_sources/datasunderstand.md" target="_blank"
+      <li><a href="_sources/mengukurjarak.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -378,7 +378,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Data Understanding</h1>
+    <h1>Mengukur Jarak</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -388,7 +388,24 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#macam-macam-data">Macam Macam Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesamaan-dan-ketidaksamaan">Kesamaan dan Ketidaksamaan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-matriks-dan-ketidaksamaan-matriks">Data Matriks dan Ketidaksamaan Matriks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengukur-jarak-untuk-atribut-nominal">Mengukur jarak untuk atribut nominal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengukur-jarak-untuk-atribut-binary">Mengukur jarak untuk atribut Binary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh">Contoh</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-ordinal">Atribut Ordinal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standarisasi-data-numeric-normalisasi">Standarisasi data Numeric(normalisasi)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-data-matrik-dan-ketidaksamaan-matrik">Contoh Data Matrik dan Ketidaksamaan Matrik</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jarak-pada-data-numerik-minkowski-distance">Jarak pada data Numerik : Minkowski Distance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-cases-of-minkowski-distance">Special Cases of Minkowski Distance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-minkowski-distance">Contoh Minkowski Distance</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-campuran">Atribut Campuran</a></li>
 </ul>
             </nav>
         </div>
@@ -400,29 +417,190 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="data-understanding">
-<h1>Data Understanding<a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h1>
-<p>Memahami data dimulai dengan mengumpulkan data awal dan dilanjutkan dengan dengan kegiatan-kegiatan untuk mendapatkan data yang lazim serta identifikasi data yang berkualitas, pemahaman data sangat diperlukan untuk mendeteksi bagian yang menarik dari data sehingga dapat membangun hipotesa terhadap informasi yang tersembunyi.</p>
-<ol class="arabic simple">
-<li><p>kemampuan untuk menarik data(mampu mengambil data dari beberapa sumber)</p></li>
-</ol>
+  <section class="tex2jax_ignore mathjax_ignore" id="mengukur-jarak">
+<h1>Mengukur Jarak<a class="headerlink" href="#mengukur-jarak" title="Link to this heading">#</a></h1>
+<section id="kesamaan-dan-ketidaksamaan">
+<h2>Kesamaan dan Ketidaksamaan<a class="headerlink" href="#kesamaan-dan-ketidaksamaan" title="Link to this heading">#</a></h2>
+<p>Kesamaan</p>
 <ul class="simple">
-<li><p><strong>Mengumpulkan data awal</strong></p></li>
-<li><p><strong>Mendeskripsikan data</strong></p></li>
-<li><p><strong>Ekplorasi data /Menyelidiki data</strong></p></li>
-<li><p><strong>Verifikasi kualitas data</strong></p></li>
+<li><p>Mengukur secara numerik bagaimana kesamaan 2 objek</p></li>
+<li><p>Tinggi nilainya  bila benda yang lebih mirip</p></li>
+<li><p>Range [0,1]</p></li>
 </ul>
-<section id="macam-macam-data">
-<h2>Macam Macam Data<a class="headerlink" href="#macam-macam-data" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p><strong>Data terstruktur (structured)</strong></p></li>
-<li><p><strong>Data tidak terstruktur(unstructured)</strong></p></li>
-<li><p><strong>Data bahasa alami(Natural Language)</strong></p></li>
-<li><p><strong>Data yang dibangkit oleh Mesin (Machined-Generated)</strong></p></li>
-<li><p><strong>Data Audio, Video,Citra</strong></p></li>
-<li><p><strong>Data Streamming</strong></p></li>
-<li><p><strong>Data berbasis Graph(Graph-based)</strong></p></li>
-</ol>
+<p>Ketidaksamaan</p>
+<ul class="simple">
+<li><p>Ukuran numerik dari perbedaan dua objek</p></li>
+<li><p>Sangat rendah bila benda yang lebih mirip</p></li>
+<li><p>Minimum ketidaksamaan 0</p></li>
+</ul>
+</section>
+<section id="data-matriks-dan-ketidaksamaan-matriks">
+<h2>Data Matriks dan Ketidaksamaan Matriks<a class="headerlink" href="#data-matriks-dan-ketidaksamaan-matriks" title="Link to this heading">#</a></h2>
+<p>Data Matriks</p>
+<ul class="simple">
+<li><p>n titik data dengan p dimensi</p></li>
+<li><p>2 Mode
+<img alt="alt text" src="_images/image.png" /></p></li>
+</ul>
+<p>Ketidaksamaan Matriks</p>
+<ul class="simple">
+<li><p>n titik data yang didata adalah distance/jarak</p></li>
+<li><p>Matrik segitiga</p></li>
+<li><p>1 Mode
+<img alt="alt text" src="_images/image-1.png" /></p></li>
+</ul>
+</section>
+<section id="mengukur-jarak-untuk-atribut-nominal">
+<h2>Mengukur jarak untuk atribut nominal<a class="headerlink" href="#mengukur-jarak-untuk-atribut-nominal" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Misal terdapat 2 atau lebih nilai, misall red, yellow, blue, green(generalisasi dari atribut binary)</p></li>
+<li><p>Metode Simple Matching
+<img alt="alt text" src="_images/image-2.png" /></p></li>
+</ul>
+</section>
+<section id="mengukur-jarak-untuk-atribut-binary">
+<h2>Mengukur jarak untuk atribut Binary<a class="headerlink" href="#mengukur-jarak-untuk-atribut-binary" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Tabel kontingensi untuk data biner
+<img alt="alt text" src="_images/image-3.png" /></p></li>
+<li><p>Mengukur jarak untuk variabel biner simetris
+<img alt="alt text" src="_images/image-4.png" /></p></li>
+<li><p>Mengukur jarak untuk variabel biner tidak simetris
+<img alt="alt text" src="_images/image-5.png" /></p></li>
+<li><p>Jaccard coefficient(Kesamaan mengukur variable tidak simetris biner)
+<img alt="alt text" src="_images/image-6.png" /></p></li>
+<li><p>Jaccard coefficient sama dengan “coherence”:
+<img alt="alt text" src="_images/image-7.png" /></p></li>
+</ul>
+<section id="contoh">
+<h3>Contoh<a class="headerlink" href="#contoh" title="Link to this heading">#</a></h3>
+<p><img alt="alt text" src="_images/image-8.png" /></p>
+<ul class="simple">
+<li><p>Jenis kelamin atribut simetris</p></li>
+<li><p>Atribut lain adalah tidak simetris biner</p></li>
+<li><p>Nilai Y dan P adalah 1, dan nilai N adalah 0</p></li>
+</ul>
+<p><img alt="alt text" src="_images/image-9.png" />
+<img alt="alt text" src="_images/image-10.png" /></p>
+</section>
+</section>
+<section id="atribut-ordinal">
+<h2>Atribut Ordinal<a class="headerlink" href="#atribut-ordinal" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Atribut ordinal dapat bernilai diskrit atau kontinu</p></li>
+<li><p>Mengandung urutan/tingkatan, misal ranking</p></li>
+<li><p>Dapat dinyatakan dengan type data interval-scaled</p>
+<ul>
+<li><p>Gantikan x if dengan urutan rankingnya <img alt="alt text" src="_images/image-11.png" /></p></li>
+<li><p>Petakan setiap nilai variable kedalam [0, 1] dengan menggantikan objek ke I dalam variable ke f dengan <img alt="alt text" src="_images/image-12.png" /></p></li>
+<li><p>Hitung ketidaksamaan (disimilarity) dengan using method variable skala interval (numerik)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="standarisasi-data-numeric-normalisasi">
+<h2>Standarisasi data Numeric(normalisasi)<a class="headerlink" href="#standarisasi-data-numeric-normalisasi" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Z-score: <img alt="alt text" src="_images/image-13.png" /></p>
+<ul>
+<li><p>X: data yang akan dinormalissi, μ: mean , σ: standard deviation</p></li>
+</ul>
+</li>
+<li><p>Cara lain : Menghitung mean absolute deviation</p></li>
+</ul>
+<p><img alt="alt text" src="_images/image-14.png" /> dengan</p>
+<p><img alt="alt text" src="_images/image-15.png" /></p>
+<ul class="simple">
+<li><p>Ukuran standarisasi dengan (z-score):</p></li>
+</ul>
+<p><img alt="alt text" src="_images/image-16.png" /></p>
+<ul class="simple">
+<li><p>Dengan menggunakan mean absolute deviation lebih handal daripada menggunakan standart deviation</p></li>
+</ul>
+<section id="contoh-data-matrik-dan-ketidaksamaan-matrik">
+<h3>Contoh Data Matrik dan Ketidaksamaan Matrik<a class="headerlink" href="#contoh-data-matrik-dan-ketidaksamaan-matrik" title="Link to this heading">#</a></h3>
+<p><img alt="alt text" src="_images/image-17.png" /></p>
+<ul class="simple">
+<li><p>Data Matrik</p></li>
+</ul>
+<p><img alt="alt text" src="_images/image-18.png" /></p>
+<ul class="simple">
+<li><p>Ketidaksamaan Matrik(with Ecludian Distance)</p></li>
+</ul>
+<p><img alt="alt text" src="_images/image-19.png" /></p>
+</section>
+</section>
+<section id="jarak-pada-data-numerik-minkowski-distance">
+<h2>Jarak pada data Numerik : Minkowski Distance<a class="headerlink" href="#jarak-pada-data-numerik-minkowski-distance" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Minkowski :</p></li>
+</ul>
+<p><img alt="alt text" src="_images/image-20.png" /></p>
+<p>Dimana i= (xi1,xi2, …,xip) dan j= (xj1,xj2, …,xjp) dua objek dengan p dimensi data, dan h adalah pangkat (disebut juga dengan L-h norm)</p>
+<ul class="simple">
+<li><p>Sifatnya</p>
+<ul>
+<li><p>d(i, j) &gt; 0 jika i ≠ j, dan d(i, i) = 0 (Positive definiteness)</p></li>
+<li><p>d(i, j) = d(j, i)  (Symmetry)</p></li>
+<li><p>d(i, j)  d(i, k) + d(k, j)  (Triangle Inequality)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="special-cases-of-minkowski-distance">
+<h2>Special Cases of Minkowski Distance<a class="headerlink" href="#special-cases-of-minkowski-distance" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>h = 1:  Manhattan (city block, L1 norm) distance</p>
+<ul class="simple">
+<li><p>Misal., the Hamming distance: Jumlah bit yang berbeda antara dua vektor biner</p></li>
+</ul>
+<p><img alt="alt text" src="_images/image-21.png" /></p>
+</li>
+<li><p>h = 2:  (L2 norm) Euclidean distance</p></li>
+</ul>
+<p><img alt="alt text" src="_images/image-22.png" /></p>
+<ul>
+<li><p>h –&gt; ∞  “supremum” (Lmax norm, L∞ norm) distance.</p>
+<ul class="simple">
+<li><p>Ini adalah selisih maksimum diantara atribut atributnyanya dalam suatu vektor</p></li>
+</ul>
+<p><img alt="alt text" src="_images/image-23.png" /></p>
+</li>
+</ul>
+<section id="contoh-minkowski-distance">
+<h3>Contoh Minkowski Distance<a class="headerlink" href="#contoh-minkowski-distance" title="Link to this heading">#</a></h3>
+<p><img alt="alt text" src="_images/image-24.png" />
+<img alt="alt text" src="_images/image-25.png" /></p>
+<p>Ketidaksamaan Matrik</p>
+<ul class="simple">
+<li><p>Manhattan (L1)
+<img alt="alt text" src="_images/image-26.png" /></p></li>
+<li><p>Ecludian (L2)
+<img alt="alt text" src="_images/image-27.png" /></p></li>
+<li><p>Supremum
+<img alt="alt text" src="_images/image-28.png" /></p></li>
+</ul>
+</section>
+</section>
+<section id="atribut-campuran">
+<h2>Atribut Campuran<a class="headerlink" href="#atribut-campuran" title="Link to this heading">#</a></h2>
+<p>Database mungkin mengandung tipe campuran (semua tipe data ada (Nominal, symmetric binary, asymmetric binary, numeric, ordinal))</p>
+<ul>
+<li><p>Kita dapat menggunakan pembobotan untuk menggabungkan
+<img alt="alt text" src="_images/image.png" /></p>
+<ul>
+<li><p>f  adalah binary atau nominal: dij(f) = 0  if xif = xjf , atau j dij(f) = 1 untuk yang lainnya</p></li>
+<li><p>Jika f  adalah numerik: gunakan normalisasi</p></li>
+<li><p>Jika f adalah ordinal</p>
+<ul class="simple">
+<li><p>Hitung ranking rif dan</p></li>
+<li><p>Cari zif sebagai skala interval</p></li>
+</ul>
+<p><img alt="alt text" src="_images/image-1.png" /></p>
+</li>
+</ul>
+</li>
+</ul>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -459,20 +637,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="bussinessunderstand.html"
+       href="ukur_iris.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Business Understanding</p>
+        <p class="prev-next-title">Pengukuran Jarak (Dissimilarity Matrix)</p>
       </div>
     </a>
     <a class="right-next"
-       href="datairis.html"
+       href="ukurdata_campuran.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Data Iris Flower</p>
+        <p class="prev-next-title">Pengukuran Jarak Data Campuran</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -492,7 +670,24 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#macam-macam-data">Macam Macam Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesamaan-dan-ketidaksamaan">Kesamaan dan Ketidaksamaan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-matriks-dan-ketidaksamaan-matriks">Data Matriks dan Ketidaksamaan Matriks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengukur-jarak-untuk-atribut-nominal">Mengukur jarak untuk atribut nominal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengukur-jarak-untuk-atribut-binary">Mengukur jarak untuk atribut Binary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh">Contoh</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-ordinal">Atribut Ordinal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standarisasi-data-numeric-normalisasi">Standarisasi data Numeric(normalisasi)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-data-matrik-dan-ketidaksamaan-matrik">Contoh Data Matrik dan Ketidaksamaan Matrik</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jarak-pada-data-numerik-minkowski-distance">Jarak pada data Numerik : Minkowski Distance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-cases-of-minkowski-distance">Special Cases of Minkowski Distance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-minkowski-distance">Contoh Minkowski Distance</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-campuran">Atribut Campuran</a></li>
 </ul>
   </nav></div>
 
