@@ -12,4 +12,5 @@ chapters:
   - file: ukur_iris
 - file: mengukurjarak
   sections:
+  - file: eksplor_campuran
   - file: ukurdata_campuran

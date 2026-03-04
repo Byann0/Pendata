@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Mengukur Jarak &#8212; My sample book</title>
+    <title>Eksplorasi Data Campuran &#8212; My sample book</title>
   
   
   
@@ -59,11 +59,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'mengukurjarak';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'eksplor_campuran';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Eksplorasi Data Campuran" href="eksplor_campuran.html" />
-    <link rel="prev" title="Pengukuran Jarak (Dissimilarity Matrix)" href="ukur_iris.html" />
+    <link rel="next" title="Pengukuran Jarak Data Campuran" href="ukurdata_campuran.html" />
+    <link rel="prev" title="Mengukur Jarak" href="mengukurjarak.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -189,8 +189,8 @@
 <li class="toctree-l2"><a class="reference internal" href="ukur_iris.html">Pengukuran Jarak (Dissimilarity Matrix)</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Mengukur Jarak</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="eksplor_campuran.html">Eksplorasi Data Campuran</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="mengukurjarak.html">Mengukur Jarak</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Eksplorasi Data Campuran</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ukurdata_campuran.html">Pengukuran Jarak Data Campuran</a></li>
 </ul>
 </details></li>
@@ -265,7 +265,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmengukurjarak.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Feksplor_campuran.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -295,7 +295,7 @@
       
       
       
-      <li><a href="_sources/mengukurjarak.md" target="_blank"
+      <li><a href="_sources/eksplor_campuran.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -305,7 +305,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -379,7 +379,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Mengukur Jarak</h1>
+    <h1>Eksplorasi Data Campuran</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -389,24 +389,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesamaan-dan-ketidaksamaan">Kesamaan dan Ketidaksamaan</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-matriks-dan-ketidaksamaan-matriks">Data Matriks dan Ketidaksamaan Matriks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengukur-jarak-untuk-atribut-nominal">Mengukur jarak untuk atribut nominal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengukur-jarak-untuk-atribut-binary">Mengukur jarak untuk atribut Binary</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh">Contoh</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-ordinal">Atribut Ordinal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standarisasi-data-numeric-normalisasi">Standarisasi data Numeric(normalisasi)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-data-matrik-dan-ketidaksamaan-matrik">Contoh Data Matrik dan Ketidaksamaan Matrik</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jarak-pada-data-numerik-minkowski-distance">Jarak pada data Numerik : Minkowski Distance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-cases-of-minkowski-distance">Special Cases of Minkowski Distance</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-minkowski-distance">Contoh Minkowski Distance</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-campuran">Atribut Campuran</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-deskriptif">Data Deskriptif</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data-data-exploration">Eksplorasi Data (Data Exploration)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">Visualisasi Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#box-plot-deteksi-outlier-harga">Box Plot (Deteksi Outlier Harga)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot-korelasi-rating-vs-reviews">Scatter Plot (Korelasi Rating vs Reviews)</a></li>
 </ul>
             </nav>
         </div>
@@ -418,193 +405,118 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="mengukur-jarak">
-<h1>Mengukur Jarak<a class="headerlink" href="#mengukur-jarak" title="Link to this heading">#</a></h1>
-<section id="kesamaan-dan-ketidaksamaan">
-<h2>Kesamaan dan Ketidaksamaan<a class="headerlink" href="#kesamaan-dan-ketidaksamaan" title="Link to this heading">#</a></h2>
-<p>Kesamaan</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="eksplorasi-data-campuran">
+<h1>Eksplorasi Data Campuran<a class="headerlink" href="#eksplorasi-data-campuran" title="Link to this heading">#</a></h1>
+<p>Dalam dataset ini, setiap baris disebut sebagai Objek Data (sering juga disebut record atau sample). Objek data di sini adalah Aplikasi Mobile.</p>
+<p>Setiap objek dijelaskan oleh beberapa Atribut (fitur). Mengacu pada materi Understanding Data, berikut adalah klasifikasi atribut dalam dataset ini:</p>
+<p>\begin{table}[H]
+\centering
+\caption{Tipe Atribut Dataset Aplikasi}
+\begin{tabular}{|l|l|p{6cm}|}
+\hline
+\textbf{Nama Atribut} &amp; \textbf{Tipe Atribut} &amp; \textbf{Penjelasan} \ \hline
+App &amp; Nominal &amp; Nama unik aplikasi (sebagai identifier). \ \hline
+Category &amp; Nominal &amp; Kategori tanpa urutan (HEALTH, TOOLS, dll). \ \hline
+Type &amp; Binary (Symmetric) &amp; Hanya ada dua nilai: Free atau Paid. \ \hline
+Content_Rating &amp; Ordinal &amp; Memiliki urutan logis (Everyone <span class="math notranslate nohighlight">\(&lt;\)</span> Teen <span class="math notranslate nohighlight">\(&lt;\)</span> Mature). \ \hline
+Rating &amp; Numeric (Interval) &amp; Nilai kontinu dengan rentang 1.0 – 5.0. \ \hline
+Price_$ &amp; Numeric (Ratio) &amp; Nilai uang, di mana angka 0 benar-benar berarti gratis. \ \hline
+\end{tabular}
+\end{table}</p>
+<section id="data-deskriptif">
+<h2>Data Deskriptif<a class="headerlink" href="#data-deskriptif" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Mengukur secara numerik bagaimana kesamaan 2 objek</p></li>
-<li><p>Tinggi nilainya  bila benda yang lebih mirip</p></li>
-<li><p>Range [0,1]</p></li>
-</ul>
-<p>Ketidaksamaan</p>
-<ul class="simple">
-<li><p>Ukuran numerik dari perbedaan dua objek</p></li>
-<li><p>Sangat rendah bila benda yang lebih mirip</p></li>
-<li><p>Minimum ketidaksamaan 0</p></li>
+<li><p>Mean &amp; Median: Jika nilai Mean (rata-rata) dan Median (50%) pada Rating berdekatan, maka data terdistribusi cukup normal.</p></li>
+<li><p>Five-Number Summary: Terdiri dari Nilai Min, Q1 (Kuartil 1), Median, Q3, dan Max. Ini berguna untuk mendeteksi adanya pencilan (outliers) pada harga aplikasi.</p></li>
 </ul>
 </section>
-<section id="data-matriks-dan-ketidaksamaan-matriks">
-<h2>Data Matriks dan Ketidaksamaan Matriks<a class="headerlink" href="#data-matriks-dan-ketidaksamaan-matriks" title="Link to this heading">#</a></h2>
-<p>Data Matriks</p>
-<ul class="simple">
-<li><p>n titik data dengan p dimensi</p></li>
-<li><p>2 Mode
-<img alt="alt text" src="_images/image.png" /></p></li>
-</ul>
-<p>Ketidaksamaan Matriks</p>
-<ul class="simple">
-<li><p>n titik data yang didata adalah distance/jarak</p></li>
-<li><p>Matrik segitiga</p></li>
-<li><p>1 Mode
-<img alt="alt text" src="_images/image-1.png" /></p></li>
-</ul>
-</section>
-<section id="mengukur-jarak-untuk-atribut-nominal">
-<h2>Mengukur jarak untuk atribut nominal<a class="headerlink" href="#mengukur-jarak-untuk-atribut-nominal" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Misal terdapat 2 atau lebih nilai, misall red, yellow, blue, green(generalisasi dari atribut binary)</p></li>
-<li><p>Metode Simple Matching
-<img alt="alt text" src="_images/image-2.png" /></p></li>
-</ul>
-</section>
-<section id="mengukur-jarak-untuk-atribut-binary">
-<h2>Mengukur jarak untuk atribut Binary<a class="headerlink" href="#mengukur-jarak-untuk-atribut-binary" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Tabel kontingensi untuk data biner
-<img alt="alt text" src="_images/image-3.png" /></p></li>
-<li><p>Mengukur jarak untuk variabel biner simetris
-<img alt="alt text" src="_images/image-4.png" /></p></li>
-<li><p>Mengukur jarak untuk variabel biner tidak simetris
-<img alt="alt text" src="_images/image-5.png" /></p></li>
-<li><p>Jaccard coefficient(Kesamaan mengukur variable tidak simetris biner)
-<img alt="alt text" src="_images/image-6.png" /></p></li>
-<li><p>Jaccard coefficient sama dengan “coherence”:
-<img alt="alt text" src="_images/image-7.png" /></p></li>
-</ul>
-<section id="contoh">
-<h3>Contoh<a class="headerlink" href="#contoh" title="Link to this heading">#</a></h3>
-<p><img alt="alt text" src="_images/image-8.png" /></p>
-<ul class="simple">
-<li><p>Jenis kelamin atribut simetris</p></li>
-<li><p>Atribut lain adalah tidak simetris biner</p></li>
-<li><p>Nilai Y dan P adalah 1, dan nilai N adalah 0</p></li>
-</ul>
-<p><img alt="alt text" src="_images/image-9.png" />
-<img alt="alt text" src="_images/image-10.png" /></p>
-</section>
-</section>
-<section id="atribut-ordinal">
-<h2>Atribut Ordinal<a class="headerlink" href="#atribut-ordinal" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Atribut ordinal dapat bernilai diskrit atau kontinu</p></li>
-<li><p>Mengandung urutan/tingkatan, misal ranking</p></li>
-<li><p>Dapat dinyatakan dengan type data interval-scaled</p>
-<ul>
-<li><p>Gantikan x if dengan urutan rankingnya <img alt="alt text" src="_images/image-11.png" /></p></li>
-<li><p>Petakan setiap nilai variable kedalam [0, 1] dengan menggantikan objek ke I dalam variable ke f dengan <img alt="alt text" src="_images/image-12.png" /></p></li>
-<li><p>Hitung ketidaksamaan (disimilarity) dengan using method variable skala interval (numerik)</p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="standarisasi-data-numeric-normalisasi">
-<h2>Standarisasi data Numeric(normalisasi)<a class="headerlink" href="#standarisasi-data-numeric-normalisasi" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Z-score: <img alt="alt text" src="_images/image-13.png" /></p>
-<ul>
-<li><p>X: data yang akan dinormalissi, μ: mean , σ: standard deviation</p></li>
-</ul>
-</li>
-<li><p>Cara lain : Menghitung mean absolute deviation</p></li>
-</ul>
-<p><img alt="alt text" src="_images/image-14.png" /> dengan</p>
-<p><img alt="alt text" src="_images/image-15.png" /></p>
-<ul class="simple">
-<li><p>Ukuran standarisasi dengan (z-score):</p></li>
-</ul>
-<p><img alt="alt text" src="_images/image-16.png" /></p>
-<ul class="simple">
-<li><p>Dengan menggunakan mean absolute deviation lebih handal daripada menggunakan standart deviation</p></li>
-</ul>
-<section id="contoh-data-matrik-dan-ketidaksamaan-matrik">
-<h3>Contoh Data Matrik dan Ketidaksamaan Matrik<a class="headerlink" href="#contoh-data-matrik-dan-ketidaksamaan-matrik" title="Link to this heading">#</a></h3>
-<p><img alt="alt text" src="_images/image-17.png" /></p>
-<ul class="simple">
-<li><p>Data Matrik</p></li>
-</ul>
-<p><img alt="alt text" src="_images/image-18.png" /></p>
-<ul class="simple">
-<li><p>Ketidaksamaan Matrik(with Ecludian Distance)</p></li>
-</ul>
-<p><img alt="alt text" src="_images/image-19.png" /></p>
-</section>
-</section>
-<section id="jarak-pada-data-numerik-minkowski-distance">
-<h2>Jarak pada data Numerik : Minkowski Distance<a class="headerlink" href="#jarak-pada-data-numerik-minkowski-distance" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Minkowski :</p></li>
-</ul>
-<p><img alt="alt text" src="_images/image-20.png" /></p>
-<p>Dimana i= (xi1,xi2, …,xip) dan j= (xj1,xj2, …,xjp) dua objek dengan p dimensi data, dan h adalah pangkat (disebut juga dengan L-h norm)</p>
-<ul class="simple">
-<li><p>Sifatnya</p>
-<ul>
-<li><p>d(i, j) &gt; 0 jika i ≠ j, dan d(i, i) = 0 (Positive definiteness)</p></li>
-<li><p>d(i, j) = d(j, i)  (Symmetry)</p></li>
-<li><p>d(i, j)  d(i, k) + d(k, j)  (Triangle Inequality)</p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="special-cases-of-minkowski-distance">
-<h2>Special Cases of Minkowski Distance<a class="headerlink" href="#special-cases-of-minkowski-distance" title="Link to this heading">#</a></h2>
-<ul>
-<li><p>h = 1:  Manhattan (city block, L1 norm) distance</p>
-<ul class="simple">
-<li><p>Misal., the Hamming distance: Jumlah bit yang berbeda antara dua vektor biner</p></li>
-</ul>
-<p><img alt="alt text" src="_images/image-21.png" /></p>
-</li>
-<li><p>h = 2:  (L2 norm) Euclidean distance</p></li>
-</ul>
-<p><img alt="alt text" src="_images/image-22.png" /></p>
-<ul>
-<li><p>h –&gt; ∞  “supremum” (Lmax norm, L∞ norm) distance.</p>
-<ul class="simple">
-<li><p>Ini adalah selisih maksimum diantara atribut atributnyanya dalam suatu vektor</p></li>
-</ul>
-<p><img alt="alt text" src="_images/image-23.png" /></p>
-</li>
-</ul>
-<section id="contoh-minkowski-distance">
-<h3>Contoh Minkowski Distance<a class="headerlink" href="#contoh-minkowski-distance" title="Link to this heading">#</a></h3>
-<p><img alt="alt text" src="_images/image-24.png" />
-<img alt="alt text" src="_images/image-25.png" /></p>
-<p>Ketidaksamaan Matrik</p>
-<ul class="simple">
-<li><p>Manhattan (L1)
-<img alt="alt text" src="_images/image-26.png" /></p></li>
-<li><p>Ecludian (L2)
-<img alt="alt text" src="_images/image-27.png" /></p></li>
-<li><p>Supremum
-<img alt="alt text" src="_images/image-28.png" /></p></li>
-</ul>
-</section>
-</section>
-<section id="atribut-campuran">
-<h2>Atribut Campuran<a class="headerlink" href="#atribut-campuran" title="Link to this heading">#</a></h2>
-<p>Database mungkin mengandung tipe campuran (semua tipe data ada (Nominal, symmetric binary, asymmetric binary, numeric, ordinal))</p>
-<ul>
-<li><p>Kita dapat menggunakan pembobotan untuk menggabungkan
-<img alt="alt text" src="_images/image.png" /></p>
-<ul>
-<li><p>f  adalah binary atau nominal: dij(f) = 0  if xif = xjf , atau j dij(f) = 1 untuk yang lainnya</p></li>
-<li><p>Jika f  adalah numerik: gunakan normalisasi</p></li>
-<li><p>Jika f adalah ordinal</p>
-<ul class="simple">
-<li><p>Hitung ranking rif dan</p></li>
-<li><p>Cari zif sebagai skala interval</p></li>
-</ul>
-<p><img alt="alt text" src="_images/image-1.png" /></p>
-</li>
-</ul>
-</li>
-</ul>
-</section>
-<div class="toctree-wrapper compound">
+<section id="eksplorasi-data-data-exploration">
+<h2>Eksplorasi Data (Data Exploration)<a class="headerlink" href="#eksplorasi-data-data-exploration" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cek Missing Values</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cek Data Kosong:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="c1"># Cek Variasi Kategori (Atribut Nominal)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Jumlah Aplikasi unik per Kategori:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Category&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># Cek Distribusi Tipe (Atribut Binary)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Perbandingan Free vs Paid:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cek Data Kosong:
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Cek Missing Values</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cek Data Kosong:&quot;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># Cek Variasi Kategori (Atribut Nominal)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Jumlah Aplikasi unik per Kategori:&quot;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualisasi-data">
+<h2>Visualisasi Data<a class="headerlink" href="#visualisasi-data" title="Link to this heading">#</a></h2>
+<p>Visualisasi memberikan pandangan pertama terhadap pola data, clusters, atau outliers sebelum kita menghitung jarak antar data.</p>
+<ol class="arabic simple">
+<li><p>Histogram (Distribusi Rating)
+Digunakan untuk melihat frekuensi kemunculan nilai pada atribut numerik.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Rating&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;teal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribusi Rating Aplikasi&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="box-plot-deteksi-outlier-harga">
+<h2>Box Plot (Deteksi Outlier Harga)<a class="headerlink" href="#box-plot-deteksi-outlier-harga" title="Link to this heading">#</a></h2>
+<p>Sangat efektif untuk melihat sebaran data berdasarkan kuartil dan melihat apakah ada aplikasi yang harganya jauh di atas rata-rata.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Price_$&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;salmon&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Box Plot Harga Aplikasi (Cek Outliers)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="scatter-plot-korelasi-rating-vs-reviews">
+<h2>Scatter Plot (Korelasi Rating vs Reviews)<a class="headerlink" href="#scatter-plot-korelasi-rating-vs-reviews" title="Link to this heading">#</a></h2>
+<p>Setiap pasang nilai diperlakukan sebagai koordinat untuk melihat apakah ada hubungan (positif, negatif, atau tidak berkorelasi) antar dua atribut.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Rating&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Reviews&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span> <span class="c1"># Menggunakan skala log karena Reviews biasanya sangat besar</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Scatter Plot: Rating vs Jumlah Reviews&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -638,20 +550,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="ukur_iris.html"
+       href="mengukurjarak.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Pengukuran Jarak (Dissimilarity Matrix)</p>
+        <p class="prev-next-title">Mengukur Jarak</p>
       </div>
     </a>
     <a class="right-next"
-       href="eksplor_campuran.html"
+       href="ukurdata_campuran.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Eksplorasi Data Campuran</p>
+        <p class="prev-next-title">Pengukuran Jarak Data Campuran</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -671,24 +583,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesamaan-dan-ketidaksamaan">Kesamaan dan Ketidaksamaan</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-matriks-dan-ketidaksamaan-matriks">Data Matriks dan Ketidaksamaan Matriks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengukur-jarak-untuk-atribut-nominal">Mengukur jarak untuk atribut nominal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengukur-jarak-untuk-atribut-binary">Mengukur jarak untuk atribut Binary</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh">Contoh</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-ordinal">Atribut Ordinal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standarisasi-data-numeric-normalisasi">Standarisasi data Numeric(normalisasi)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-data-matrik-dan-ketidaksamaan-matrik">Contoh Data Matrik dan Ketidaksamaan Matrik</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jarak-pada-data-numerik-minkowski-distance">Jarak pada data Numerik : Minkowski Distance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-cases-of-minkowski-distance">Special Cases of Minkowski Distance</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-minkowski-distance">Contoh Minkowski Distance</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#atribut-campuran">Atribut Campuran</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-deskriptif">Data Deskriptif</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data-data-exploration">Eksplorasi Data (Data Exploration)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">Visualisasi Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#box-plot-deteksi-outlier-harga">Box Plot (Deteksi Outlier Harga)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot-korelasi-rating-vs-reviews">Scatter Plot (Korelasi Rating vs Reviews)</a></li>
 </ul>
   </nav></div>
 
