@@ -553,20 +553,7 @@ Digunakan untuk melihat frekuensi kemunculan nilai pada atribut numerik.</p></li
 <section id="scatter-plot-korelasi-rating-vs-reviews">
 <h2>Scatter Plot (Korelasi Rating vs Reviews)<a class="headerlink" href="#scatter-plot-korelasi-rating-vs-reviews" title="Link to this heading">#</a></h2>
 <p>Setiap pasang nilai diperlakukan sebagai koordinat untuk melihat apakah ada hubungan (positif, negatif, atau tidak berkorelasi) antar dua atribut.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Rating&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Reviews&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span> <span class="c1"># Menggunakan skala log karena Reviews biasanya sangat besar</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Scatter Plot: Rating vs Jumlah Reviews&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/ec2f4d6f5f0b6c2c4318902958805f1f4509894f03017695eae7bff2a60e5c2b.png" src="_images/ec2f4d6f5f0b6c2c4318902958805f1f4509894f03017695eae7bff2a60e5c2b.png" />
-</div>
-</div>
+<p><img alt="scatterplot.png" src="_images/scatterplot.png" /></p>
 </section>
 </section>
 
