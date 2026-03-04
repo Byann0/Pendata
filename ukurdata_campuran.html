@@ -416,7 +416,7 @@ document.write(`
 <span class="c1"># Load data</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;google_play_store_apps_famous.csv&#39;</span><span class="p">)</span>
 
-<span class="c1"># Memilih 5 aplikasi pertama untuk simulasi matriks jarak</span>
+<span class="c1"># Memilih 5 aplikasi pertama</span>
 <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;App&#39;</span><span class="p">,</span> <span class="s1">&#39;Category&#39;</span><span class="p">,</span> <span class="s1">&#39;Rating&#39;</span><span class="p">,</span> <span class="s1">&#39;Price_$&#39;</span><span class="p">,</span> <span class="s1">&#39;Content_Rating&#39;</span><span class="p">]</span>
 <span class="n">df_sample</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
@@ -507,9 +507,24 @@ Data ordinal harus diubah menjadi peringkat (rank), lalu dipetakan ke skala
 <span class="math notranslate nohighlight">\([0, 1]\)</span> dengan rumus:</p>
 <div class="math notranslate nohighlight">
 \[z_{if} = \frac{r_{if} - 1}{M_f - 1}\]</div>
+<ul class="simple">
+<li><p>App_1 (Teen=2): <span class="math notranslate nohighlight">\((2 - 1) / (3 - 1) = 1 / 2 = \mathbf{0.5}\)</span></p></li>
+<li><p>App_2 (Mature=3): <span class="math notranslate nohighlight">\((3 - 1) / (3 - 1) = 2 / 2 = \mathbf{1.0}\)</span></p></li>
+</ul>
 <p>Di mana <span class="math notranslate nohighlight">\(M_f\)</span> adalah peringkat tertinggi.</p>
 <p><strong>B. Atribut Numerik (Rating, Price_$)</strong>
 Data numerik harus dinormalisasi agar variabel dengan angka besar (seperti harga) tidak mendominasi variabel kecil (seperti rating).</p>
+<ul class="simple">
+<li><p>Rating App_1: <span class="math notranslate nohighlight">\((3.7 - 2.5) / (5.0 - 2.5) = 1.2 / 2.5 = \mathbf{0.48}\)</span></p></li>
+<li><p>Rating App_2: <span class="math notranslate nohighlight">\((5.0 - 2.5) / (5.0 - 2.5) = 2.5 / 2.5 = \mathbf{1.0}\)</span></p></li>
+<li><p>Price App_1: <span class="math notranslate nohighlight">\((1.99 - 0.0) / (2.99 - 0.0) \approx \mathbf{0.6655}\)</span></p></li>
+<li><p>Price App_2: <span class="math notranslate nohighlight">\((0.99 - 0.0) / (2.99 - 0.0) \approx \mathbf{0.3311}\)</span></p></li>
+</ul>
+<p>Hasil Normalisasi</p>
+<ul class="simple">
+<li><p>App_1: <span class="math notranslate nohighlight">\([0.48, 0.6655, 0.5]\)</span></p></li>
+<li><p>App_2: <span class="math notranslate nohighlight">\([1.0, 0.3311, 1.0]\)</span></p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menentukan(Pengubahan ordinal) urutan: Everyone &lt; Teen &lt; Mature 17+</span>
@@ -603,6 +618,13 @@ Data numerik harus dinormalisasi agar variabel dengan angka besar (seperti harga
 <p>Manhattan Distance (City Block) dihitung dengan menjumlahkan selisih absolut dari setiap atribut.</p>
 <div class="math notranslate nohighlight">
 \[d(i, j) = |x_{i1} - x_{j1}| + |x_{i2} - x_{j2}| + \dots + |x_{ip} - x_{jp}|\]</div>
+<p>Perhitungan Jarak App_1 ke App_2:</p>
+<ul class="simple">
+<li><p>Selisih Rating: <span class="math notranslate nohighlight">\(|0.48 - 1.0| = 0.52\)</span></p></li>
+<li><p>Selisih Price: <span class="math notranslate nohighlight">\(|0.6655 - 0.3311| = 0.3344\)</span></p></li>
+<li><p>Selisih Ordinal: <span class="math notranslate nohighlight">\(|0.5 - 1.0| = 0.5\)</span></p></li>
+<li><p>Total Manhattan: <span class="math notranslate nohighlight">\(0.52 + 0.3344 + 0.5 = \mathbf{1.3544}\)</span></p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mengambil fitur yang sudah dinormalisasi</span>
@@ -710,6 +732,13 @@ Data numerik harus dinormalisasi agar variabel dengan angka besar (seperti harga
 <p>Euclidean Distance adalah jarak “garis lurus” antar dua titik di ruang multidimensi.</p>
 <div class="math notranslate nohighlight">
 \[d(i, j) = \sqrt{(x_{i1} - x_{j1})^2 + (x_{i2} - x_{j2})^2 + \dots + (x_{ip} - x_{jp})^2}\]</div>
+<p>Perhitungan Jarak App_1 ke App_2:</p>
+<ul class="simple">
+<li><p>Kuadrat Selisih Rating: <span class="math notranslate nohighlight">\((0.52)^2 = 0.2704\)</span></p></li>
+<li><p>Kuadrat Selisih Price: <span class="math notranslate nohighlight">\((0.3344)^2 = 0.1118\)</span></p></li>
+<li><p>Kuadrat Selisih Ordinal: <span class="math notranslate nohighlight">\((0.5)^2 = 0.25\)</span></p></li>
+<li><p>Total Euclidean: <span class="math notranslate nohighlight">\(\sqrt{0.2704 + 0.1118 + 0.25} = \sqrt{0.6322} \approx \mathbf{0.7951}\)</span></p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menghitung Euclidean Distance</span>
@@ -811,6 +840,15 @@ Data numerik harus dinormalisasi agar variabel dengan angka besar (seperti harga
 <section id="menggabungkan-atribut-nominal">
 <h2>Menggabungkan Atribut Nominal<a class="headerlink" href="#menggabungkan-atribut-nominal" title="Link to this heading">#</a></h2>
 <p>Untuk menghitung jarak total pada Atribut Campuran, PPT menyarankan penggunaan pembobotan. Untuk atribut Nominal (Category), jika nilainya sama maka jaraknya <span class="math notranslate nohighlight">\(0\)</span>, jika berbeda jaraknya <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>Gabungkan atribut Nominal (Category) dengan hasil Manhattan tadi.</p>
+<ul class="simple">
+<li><p>Atribut Nominal (Category): App_1 (HEALTH) vs App_2 (LIFESTYLE). Karena berbeda, maka jaraknya = 1.</p></li>
+<li><p>Atribut Lain (Rating, Price, Content): Kita gunakan hasil jumlah selisih Manhattan = 1.3544.</p></li>
+</ul>
+<p>Pergitungan Jarak Total :</p>
+<p>Jumlah atribut (<span class="math notranslate nohighlight">\(p\)</span>) = 4 (Category, Rating, Price, Content).</p>
+<div class="math notranslate nohighlight">
+\[Jarak = \frac{1 (\text{Nominal}) + 1.3544 (\text{Manhattan})}{4}$$$$Jarak = \frac{2.3544}{4} = \mathbf{0.5886}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">hitung_jarak_campuran</span><span class="p">(</span><span class="n">idx1</span><span class="p">,</span> <span class="n">idx2</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
