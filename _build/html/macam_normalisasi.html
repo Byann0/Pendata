@@ -417,32 +417,6 @@ document.write(`
 <p><strong>Normalisasi</strong> adalah proses penskalaan nilai atribut dari sebuah dataset sehingga berada dalam rentang nilai yang seragam.</p>
 <p>Dalam konteks penambangan data adalah bagaimana mendapatkan informasi yang berharga untuk pijakan pengambilan keputusan atau tujuan tertentu.</p>
 <p>Terdapat 3 cara untuk melakukan normalisasi data sebagai berikut :</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Dataset Pelatihan.csv&#39;</span><span class="p">)</span>
-
-<span class="n">df_sample</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;UTS&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dataset Contoh :&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df_sample</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dataset Contoh :
-    UTS
-0  90.0
-1  75.0
-2  85.0
-3  55.0
-4  80.0
-</pre></div>
-</div>
-</div>
-</div>
 <section id="min-max-scaling">
 <h2>1. Min-Max Scaling<a class="headerlink" href="#min-max-scaling" title="Link to this heading">#</a></h2>
 <p>Metode ini melakukan transformasi linear pada data asli. Data kalian akan “diperas” masuk ke dalam rentang baru, paling sering adalah 0 sampai 1.</p>
