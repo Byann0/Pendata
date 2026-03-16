@@ -12,16 +12,18 @@ kernelspec:
   name: python3
 ---
 
-# Mengukur Jarak
+# Data Distance
 
 ## Kesamaan dan Ketidaksamaan
 
-Kesamaan 
+Kesamaan
+
 - Mengukur secara numerik bagaimana kesamaan 2 objek
 - Tinggi nilainya  bila benda yang lebih mirip
 - Range [0,1]
 
 Ketidaksamaan
+
 - Ukuran numerik dari perbedaan dua objek
 - Sangat rendah bila benda yang lebih mirip
 - Minimum ketidaksamaan 0
@@ -29,11 +31,13 @@ Ketidaksamaan
 ## Data Matriks dan Ketidaksamaan Matriks
 
 Data Matriks
+
 - n titik data dengan p dimensi
 - 2 Mode
 ![alt text](/gambar/Distance/image.png)
 
 Ketidaksamaan Matriks
+
 - n titik data yang didata adalah distance/jarak
 - Matrik segitiga
 - 1 Mode
@@ -65,9 +69,10 @@ Ketidaksamaan Matriks
 ### Contoh
 
 ![alt text](/gambar/Distance/image-8.png)
+
 - Jenis kelamin atribut simetris
 - Atribut lain adalah tidak simetris biner
-- Nilai Y dan P adalah 1, dan nilai N adalah 0 
+- Nilai Y dan P adalah 1, dan nilai N adalah 0
 
 ![alt text](/gambar/Distance/image-9.png)
 ![alt text](/gambar/Distance/image-10.png)
@@ -90,7 +95,8 @@ Ketidaksamaan Matriks
 ![alt text](/gambar/Distance/image-14.png) dengan
 
 ![alt text](/gambar/Distance/image-15.png)
-  - Ukuran standarisasi dengan (z-score): 
+
+- Ukuran standarisasi dengan (z-score):
   
   ![alt text](/gambar/Distance/image-16.png)
 - Dengan menggunakan mean absolute deviation lebih handal daripada menggunakan standart deviation
@@ -115,20 +121,22 @@ Ketidaksamaan Matriks
 
 Dimana i= (xi1,xi2, ...,xip) dan j= (xj1,xj2, ...,xjp) dua objek dengan p dimensi data, dan h adalah pangkat (disebut juga dengan L-h norm)
 
-- Sifatnya 
+- Sifatnya
   - d(i, j) > 0 jika i ≠ j, dan d(i, i) = 0 (Positive definiteness)
   - d(i, j) = d(j, i)  (Symmetry)
   - d(i, j)  d(i, k) + d(k, j)  (Triangle Inequality)
 
 ## Special Cases of Minkowski Distance
-- h = 1:  Manhattan (city block, L1 norm) distance 
+
+- h = 1:  Manhattan (city block, L1 norm) distance
   - Misal., the Hamming distance: Jumlah bit yang berbeda antara dua vektor biner
 
   ![alt text](/gambar/Distance/image-21.png)
 - h = 2:  (L2 norm) Euclidean distance
 
 ![alt text](/gambar/Distance/image-22.png)
-- h --> ∞  “supremum” (Lmax norm, L∞ norm) distance. 
+
+- h --> ∞  “supremum” (Lmax norm, L∞ norm) distance.
   - Ini adalah selisih maksimum diantara atribut atributnyanya dalam suatu vektor
   
   ![alt text](/gambar/Distance/image-23.png)
@@ -139,6 +147,7 @@ Dimana i= (xi1,xi2, ...,xip) dan j= (xj1,xj2, ...,xjp) dua objek dengan p dimens
 ![alt text](/gambar/Distance/image-25.png)
 
 Ketidaksamaan Matrik
+
 - Manhattan (L1)
 ![alt text](/gambar/Distance/image-26.png)
 - Ecludian (L2)
@@ -149,14 +158,14 @@ Ketidaksamaan Matrik
 ## Atribut Campuran
 
 Database mungkin mengandung tipe campuran (semua tipe data ada (Nominal, symmetric binary, asymmetric binary, numeric, ordinal))
-- Kita dapat menggunakan pembobotan untuk menggabungkan 
+
+- Kita dapat menggunakan pembobotan untuk menggabungkan
 ![alt text](/gambar/Distance/image.png)
   - f  adalah binary atau nominal: dij(f) = 0  if xif = xjf , atau j dij(f) = 1 untuk yang lainnya
-  - Jika f  adalah numerik: gunakan normalisasi 
+  - Jika f  adalah numerik: gunakan normalisasi
   - Jika f adalah ordinal
     - Hitung ranking rif dan
     - Cari zif sebagai skala interval
 
     ![alt text](/gambar/Distance/image-1.png)
   
-

@@ -14,4 +14,10 @@ chapters:
   sections:
   - file: eksplor_campuran
   - file: ukurdata_campuran
-- file: missing_value
+- file: preproses
+  sections: 
+  - file: macam_normalisasi
+  - file: knn
+    sections:
+    - file: missing_value
+  - file: wknn
