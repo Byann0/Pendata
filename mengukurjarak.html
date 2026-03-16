@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Mengukur Jarak &#8212; My sample book</title>
+    <title>Data Distance &#8212; My sample book</title>
   
   
   
@@ -189,12 +189,20 @@
 <li class="toctree-l2"><a class="reference internal" href="ukur_iris.html">Pengukuran Jarak (Dissimilarity Matrix)</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Mengukur Jarak</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Data Distance</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="eksplor_campuran.html">Eksplorasi Data Campuran</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ukurdata_campuran.html">Pengukuran Jarak Data Campuran</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="missing_value.html">Mencari Missing Value</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="preproses.html">Pre-processing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="macam_normalisasi.html">Normalisasi Data</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="knn.html">K-Nearest Neighbors (K-NN)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="missing_value.html">Mencari Missing Value</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="wknn.html">WKNN</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -380,7 +388,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Mengukur Jarak</h1>
+    <h1>Data Distance</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -419,8 +427,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="mengukur-jarak">
-<h1>Mengukur Jarak<a class="headerlink" href="#mengukur-jarak" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="data-distance">
+<h1>Data Distance<a class="headerlink" href="#data-distance" title="Link to this heading">#</a></h1>
 <section id="kesamaan-dan-ketidaksamaan">
 <h2>Kesamaan dan Ketidaksamaan<a class="headerlink" href="#kesamaan-dan-ketidaksamaan" title="Link to this heading">#</a></h2>
 <p>Kesamaan</p>
@@ -512,11 +520,10 @@ document.write(`
 </ul>
 <p><img alt="alt text" src="_images/image-14.png" /> dengan</p>
 <p><img alt="alt text" src="_images/image-15.png" /></p>
-<ul class="simple">
-<li><p>Ukuran standarisasi dengan (z-score):</p></li>
-</ul>
+<ul>
+<li><p>Ukuran standarisasi dengan (z-score):</p>
 <p><img alt="alt text" src="_images/image-16.png" /></p>
-<ul class="simple">
+</li>
 <li><p>Dengan menggunakan mean absolute deviation lebih handal daripada menggunakan standart deviation</p></li>
 </ul>
 <section id="contoh-data-matrik-dan-ketidaksamaan-matrik">

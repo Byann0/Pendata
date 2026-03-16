@@ -6,7 +6,9 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Search - My sample book</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>K-Nearest Neighbors (K-NN) &#8212; My sample book</title>
   
   
   
@@ -55,12 +57,13 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'search';</script>
-  <script src="_static/searchtools.js"></script>
-  <script src="_static/language_data.js"></script>
-  <script src="searchindex.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'knn';</script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Mencari Missing Value" href="missing_value.html" />
+    <link rel="prev" title="Normalisasi Data" href="macam_normalisasi.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -92,7 +95,7 @@
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
-      action="#"
+      action="search.html"
       method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
   <input type="search"
@@ -122,8 +125,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -180,7 +181,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="pengantardata.html">Pengantar Data Mining</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bussinessunderstand.html">Business Understanding</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="datasunderstand.html">Data Understanding</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -193,9 +194,9 @@
 <li class="toctree-l2"><a class="reference internal" href="ukurdata_campuran.html">Pengukuran Jarak Data Campuran</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="preproses.html">Pre-processing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="preproses.html">Pre-processing</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="macam_normalisasi.html">Normalisasi Data</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="knn.html">K-Nearest Neighbors (K-NN)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">K-Nearest Neighbors (K-NN)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="missing_value.html">Mencari Missing Value</a></li>
 </ul>
 </details></li>
@@ -273,7 +274,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fsearch.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fknn.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -285,6 +286,54 @@
   </span>
 <span class="btn__text-container">Open issue</span>
 </a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/knn.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
 </li>
       
   </ul>
@@ -326,7 +375,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -335,42 +386,132 @@ document.write(`
 </div>
               
               
-  <div class="bd-search-container">
-    <h1>Search</h1>
-    <noscript>
-      <div class="admonition error">
-        <p class="admonition-title">Error</p>
-        <p>Please activate JavaScript to enable the search functionality.</p>
-      </div>
-    </noscript>
-    
-<form class="bd-search d-flex align-items-center"
-      action="#"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-    <div id="search-results"></div>
-  </div>
-  <script>
-    // Activate the search field on page load
-    let searchInput = document.querySelector("form.bd-search input");
-    if (searchInput) {
-        searchInput.focus();
-        searchInput.select();
-        console.log("[PST]: Set focus on search field.");
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>K-Nearest Neighbors (K-NN)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prinsip-dasar-knn">Prinsip Dasar KNN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euclidean-distance">Euclidean Distance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jarak-manhattan">Jarak Manhattan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jarak-minkowski">Jarak Minkowski</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jarak-chebyshev">Jarak Chebyshev</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jarak-cosine">Jarak Cosine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jarak-mahalanobis">Jarak Mahalanobis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prosedur-algoritma-knn">Prosedur Algoritma KNN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="k-nearest-neighbors-k-nn">
+<h1>K-Nearest Neighbors (K-NN)<a class="headerlink" href="#k-nearest-neighbors-k-nn" title="Link to this heading">#</a></h1>
+<p>adalah algoritma klasifikasi yang sangat populer dalam
+pembelajaran mesin, khususnya dalam kategori supervised learning. Algoritma ini pertama kali dikembangkan oleh Evelyn Fix dan Joseph Hodges pada tahun 1951. K-NN bekerja dengan cara mengklasifikasikan suatu data berdasarkan kedekatan jarak dengan data lain dalam kelompok tertentu.</p>
+<section id="prinsip-dasar-knn">
+<h2>Prinsip Dasar KNN<a class="headerlink" href="#prinsip-dasar-knn" title="Link to this heading">#</a></h2>
+<p>adalah memanfaatkan jarak untuk menentukan kelompok atau kelas suatu data. Algoritma ini menghitung jarak antara data baru yang akan diklasifikasikan dengan data yang ada pada dataset, kemudian memilih sejumlah tetangga terdekat yang ditentukan oleh parameter kkk. Berdasarkan mayoritas kelas dari kkk tetangga tersebut, data baru diklasifikasikan.</p>
+</section>
+<section id="euclidean-distance">
+<h2>Euclidean Distance<a class="headerlink" href="#euclidean-distance" title="Link to this heading">#</a></h2>
+<p>Dua data, misalnya data <span class="math notranslate nohighlight">\(A\)</span> dan data <span class="math notranslate nohighlight">\(B\)</span> dengan koordinat <span class="math notranslate nohighlight">\((x_1, y_1)\)</span> dan <span class="math notranslate nohighlight">\((x_2, y_2)\)</span> dalam ruang dua dimensi, memiliki jarak Euclidean sebagai berikut:</p>
+<div class="math notranslate nohighlight">
+\[d(A, B) = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\]</div>
+<p>Prosedur Algoritma K-NN</p>
+<ol class="arabic simple">
+<li><p>Tentukan nilai <span class="math notranslate nohighlight">\(k\)</span> (jumlah tetangga terdekat).</p></li>
+<li><p>Hitung jarak antara data baru dengan seluruh data yang ada dalam dataset.</p></li>
+<li><p>Urutkan data berdasarkan jarak terdekat.</p></li>
+<li><p>Pilih <span class="math notranslate nohighlight">\(k\)</span> data terdekat.</p></li>
+<li><p>Tentukan kelas berdasarkan mayoritas kelas dari <span class="math notranslate nohighlight">\(k\)</span> data tersebut.</p></li>
+</ol>
+</section>
+<section id="jarak-manhattan">
+<h2>Jarak Manhattan<a class="headerlink" href="#jarak-manhattan" title="Link to this heading">#</a></h2>
+<p>Menghitung jarak dalam ruang grid atau “kotak-kotak” seperti jalan-jalan di kota. Jarak Manhattan untuk dua titik <span class="math notranslate nohighlight">\(A\)</span> dan <span class="math notranslate nohighlight">\(B\)</span> adalah:</p>
+<div class="math notranslate nohighlight">
+\[d(A, B) = \sum_{i=1}^{n} |x_i - y_i|\]</div>
+</section>
+<section id="jarak-minkowski">
+<h2>Jarak Minkowski<a class="headerlink" href="#jarak-minkowski" title="Link to this heading">#</a></h2>
+<p>Generalisasi dari jarak Euclidean dan Manhattan. Jika <span class="math notranslate nohighlight">\(p = 2\)</span>, hasilnya adalah jarak Euclidean; jika <span class="math notranslate nohighlight">\(p = 1\)</span>, hasilnya adalah jarak Manhattan.</p>
+<div class="math notranslate nohighlight">
+\[d(A, B) = \left( \sum_{i=1}^{n} |x_i - y_i|^p \right)^{1/p}\]</div>
+</section>
+<section id="jarak-chebyshev">
+<h2>Jarak Chebyshev<a class="headerlink" href="#jarak-chebyshev" title="Link to this heading">#</a></h2>
+<p>Mengukur jarak maksimum di sepanjang satu dimensi koordinat. Sering digunakan dalam perhitungan untuk papan catur atau dalam kasus jarak tak terbatas.</p>
+<div class="math notranslate nohighlight">
+\[d(A, B) = \max(|x_i - y_i|)\]</div>
+</section>
+<section id="jarak-cosine">
+<h2>Jarak Cosine<a class="headerlink" href="#jarak-cosine" title="Link to this heading">#</a></h2>
+<p>Digunakan untuk mengukur kesamaan antara dua vektor dalam ruang berdimensi tinggi. Dihitung berdasarkan sudut antara dua vektor, bukan panjang jarak absolut.</p>
+<div class="math notranslate nohighlight">
+\[d(A, B) = 1 - \frac{\sum_{i=1}^{n} x_i y_i}{\sqrt{\sum_{i=1}^{n} x_i^2} \cdot \sqrt{\sum_{i=1}^{n} y_i^2}}\]</div>
+</section>
+<section id="jarak-mahalanobis">
+<h2>Jarak Mahalanobis<a class="headerlink" href="#jarak-mahalanobis" title="Link to this heading">#</a></h2>
+<p>Cocok untuk data dengan distribusi variabel berbeda. Jarak ini mempertimbangkan korelasi antara variabel.</p>
+<div class="math notranslate nohighlight">
+\[d(A, B) = \sqrt{(X - Y)^T S^{-1} (X - Y)}\]</div>
+<p>Di mana <span class="math notranslate nohighlight">\(S\)</span> adalah matriks kovarians dari data.</p>
+</section>
+<section id="prosedur-algoritma-knn">
+<h2>Prosedur Algoritma KNN<a class="headerlink" href="#prosedur-algoritma-knn" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Tentukan nilai k (jumlah tetangga terdekat).</p></li>
+<li><p>Hitung jarak antara data baru dengan seluruh data yang ada dalam dataset.</p></li>
+<li><p>Urutkan data berdasarkan jarak terdekat.</p></li>
+<li><p>Pilih k data terdekat.</p></li>
+<li><p>Tentukan kelas berdasarkan mayoritas kelas dari k data tersebut.</p></li>
+</ol>
+</section>
+<section id="kesimpulan">
+<h2>Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h2>
+<p>K-Nearest Neighbors (K-NN) adalah algoritma yang sederhana namun sangat efektif untuk klasifikasi. Dengan menggunakan jarak sebagai penentu kemiripan antar data, K-NN dapat digunakan dalam berbagai bidang, seperti pengenalan pola dan klasifikasi gambar. Namun, K-NN juga memiliki kelemahan dalam hal efisiensi jika jumlah data sangat besar, serta rentan terhadap outlier dan pemilihan nilai kkk yang kurang tepat.
+Implementasi dalam Python juga cukup sederhana, dan dengan pemahaman mendalam tentang konsep K-NN, kita bisa mengaplikasikannya dalam berbagai kasus klasifikasi.</p>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
     }
-  </script>
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
 
               
               
@@ -379,12 +520,53 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="macam_normalisasi.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Normalisasi Data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="missing_value.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Mencari Missing Value</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prinsip-dasar-knn">Prinsip Dasar KNN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euclidean-distance">Euclidean Distance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jarak-manhattan">Jarak Manhattan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jarak-minkowski">Jarak Minkowski</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jarak-chebyshev">Jarak Chebyshev</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jarak-cosine">Jarak Cosine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jarak-mahalanobis">Jarak Mahalanobis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prosedur-algoritma-knn">Prosedur Algoritma KNN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
