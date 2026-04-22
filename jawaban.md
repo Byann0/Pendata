@@ -54,5 +54,5 @@ Berdasarkan hasil di atas, model KNN mampu melakukan klasifikasi dengan sempurna
 ![alt text](/gambaruts/Knn.png)
 6. Scorer
 ![alt text](/gambaruts/confussionmatrix.png)
-7. Visualisai Overflow
+7. Visualisai Workflow
 ![alt text](/gambaruts/overflow.png)
