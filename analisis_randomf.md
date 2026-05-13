@@ -14,13 +14,17 @@ Dataset **adult.csv** (Census Income) digunakan untuk memprediksi apakah pendapa
 
 ---
 
-## 2. Metodologi (Workflow Orange3)
+## 2. Workflow Knime
 
 Proses analisis dilakukan dengan alur kerja visual berikut:
 
 ![Workflow Analisis](/gambar/randomforest/workflow.png)
 
 Alur kerja mencakup pemuatan data, pengambilan sampel (*Data Sampler*), pelatihan model (**Random Forest** & **Naive Bayes**), serta evaluasi hasil.
+
+Partisi Table
+
+![Partisi](/gambar/randomforest/partisi.png)
 
 ---
 
