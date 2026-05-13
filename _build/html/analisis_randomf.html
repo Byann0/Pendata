@@ -398,19 +398,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan-dataset">1. Ringkasan Dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alur-kerja-workflow-orange3">2. Alur Kerja (Workflow) Orange3</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-model">3. Parameter Model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-hasil-evaluasi-test-and-score">4. Analisis Hasil Evaluasi (Test and Score)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-metrik">Analisis Metrik:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-dataset">1. Penjelasan Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodologi-workflow-orange3">2. Metodologi (Workflow Orange3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konfigurasi-model">3. Konfigurasi Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-random-forest">A. Random Forest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-naive-bayes">B. Naive Bayes</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-hasil-evaluasi">4. Analisis Hasil Evaluasi</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-confusion-matrix">5. Analisis Confusion Matrix</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-random-forest-cm-scorer-png">A. Random Forest (<code class="docutils literal notranslate"><span class="pre">cm_scorer.png</span></code>)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-naive-bayes-cm-scorer-nb-png">B. Naive Bayes (<code class="docutils literal notranslate"><span class="pre">cm_scorer_nb.png</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix-random-forest">Confusion Matrix: Random Forest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix-naive-bayes">Confusion Matrix: Naive Bayes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">6. Kesimpulan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan-akhir">6. Kesimpulan Akhir</a></li>
 </ul>
             </nav>
         </div>
@@ -424,47 +425,49 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="laporan-analisis-klasifikasi-prediksi-pendapatan-dataset-adult">
 <h1>Laporan Analisis Klasifikasi Prediksi Pendapatan (Dataset Adult)<a class="headerlink" href="#laporan-analisis-klasifikasi-prediksi-pendapatan-dataset-adult" title="Link to this heading">#</a></h1>
-<p>Laporan ini menyajikan analisis lengkap mengenai eksperimen machine learning yang dilakukan menggunakan software Orange3 untuk memprediksi kategori pendapatan (income) berdasarkan data demografis.</p>
-<section id="ringkasan-dataset">
-<h2>1. Ringkasan Dataset<a class="headerlink" href="#ringkasan-dataset" title="Link to this heading">#</a></h2>
-<p>Dataset yang digunakan adalah <strong>adult.csv</strong> (sering disebut sebagai dataset ‘Census Income’).</p>
+<p>Laporan ini disusun untuk analisis data mining menggunakan software Knime.</p>
+<section id="penjelasan-dataset">
+<h2>1. Penjelasan Dataset<a class="headerlink" href="#penjelasan-dataset" title="Link to this heading">#</a></h2>
+<p>Dataset <strong>adult.csv</strong> (Census Income) digunakan untuk memprediksi apakah pendapatan seseorang melebihi $50.000 per tahun berdasarkan data sensus.</p>
+<p><strong>Karakteristik Data:</strong></p>
 <ul class="simple">
-<li><p><strong>Target Variabel</strong>: <code class="docutils literal notranslate"><span class="pre">income</span></code> (dua kategori: <code class="docutils literal notranslate"><span class="pre">&lt;=50K</span></code> dan <code class="docutils literal notranslate"><span class="pre">&gt;50K</span></code>).</p></li>
-<li><p><strong>Fitur Utama</strong>: Umur, status pekerjaan, pendidikan, status perkawinan, pekerjaan, ras, jenis kelamin, keuntungan/kerugian modal, dan jam kerja per minggu.</p></li>
+<li><p><strong>Target</strong>: <code class="docutils literal notranslate"><span class="pre">income</span></code> (&lt;=50K atau &gt;50K).</p></li>
+<li><p><strong>Fitur Kategorikal</strong>: <code class="docutils literal notranslate"><span class="pre">workclass</span></code>, <code class="docutils literal notranslate"><span class="pre">education</span></code>, <code class="docutils literal notranslate"><span class="pre">marital-status</span></code>, <code class="docutils literal notranslate"><span class="pre">occupation</span></code>, <code class="docutils literal notranslate"><span class="pre">relationship</span></code>, <code class="docutils literal notranslate"><span class="pre">race</span></code>, <code class="docutils literal notranslate"><span class="pre">sex</span></code>, <code class="docutils literal notranslate"><span class="pre">native-country</span></code>.</p></li>
+<li><p><strong>Fitur Numerik</strong>: <code class="docutils literal notranslate"><span class="pre">age</span></code>, <code class="docutils literal notranslate"><span class="pre">fnlwgt</span></code>, <code class="docutils literal notranslate"><span class="pre">education-num</span></code>, <code class="docutils literal notranslate"><span class="pre">capital-gain</span></code>, <code class="docutils literal notranslate"><span class="pre">capital-loss</span></code>, <code class="docutils literal notranslate"><span class="pre">hours-per-week</span></code>.</p></li>
 </ul>
 </section>
-<section id="alur-kerja-workflow-orange3">
-<h2>2. Alur Kerja (Workflow) Orange3<a class="headerlink" href="#alur-kerja-workflow-orange3" title="Link to this heading">#</a></h2>
-<p>Berdasarkan tangkapan layar workflow, proses dilakukan sebagai berikut:</p>
-<ol class="arabic simple">
-<li><p><strong>File</strong>: Memuat dataset <code class="docutils literal notranslate"><span class="pre">adult.csv</span></code>.</p></li>
-<li><p><strong>Data Sampler</strong>: Membagi data menjadi data latih (training) dan data uji (testing).</p></li>
-<li><p><strong>Model Klasifikasi</strong>: Dua algoritma digunakan untuk perbandingan:</p>
-<ul class="simple">
-<li><p><strong>Random Forest</strong>: Algoritma berbasis ensemble tree.</p></li>
-<li><p><strong>Naive Bayes</strong>: Algoritma probabilitas berbasis teorema Bayes.</p></li>
-</ul>
-</li>
-<li><p><strong>Test and Score</strong>: Mengevaluasi kinerja model menggunakan data uji.</p></li>
-<li><p><strong>Confusion Matrix</strong>: Visualisasi detail kesalahan prediksi model.</p></li>
-</ol>
+<hr class="docutils" />
+<section id="metodologi-workflow-orange3">
+<h2>2. Metodologi (Workflow Orange3)<a class="headerlink" href="#metodologi-workflow-orange3" title="Link to this heading">#</a></h2>
+<p>Proses analisis dilakukan dengan alur kerja visual berikut:</p>
+<p><img alt="Workflow Analisis" src="gambar/randomforest/Screenshot%202026-05-13%20091440.png" /></p>
+<p>Alur kerja mencakup pemuatan data, pengambilan sampel (<em>Data Sampler</em>), pelatihan model (<strong>Random Forest</strong> &amp; <strong>Naive Bayes</strong>), serta evaluasi hasil.</p>
 </section>
-<section id="parameter-model">
-<h2>3. Parameter Model<a class="headerlink" href="#parameter-model" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><strong>Random Forest</strong>: Menggunakan 10 pohon (trees) dengan opsi “Do not split subsets smaller than 5” dan “Limit maximal tree depth to 10” (seperti terlihat pada <code class="docutils literal notranslate"><span class="pre">rfl.png</span></code>).</p></li>
-<li><p><strong>Naive Bayes</strong>: Menggunakan pengaturan standar Orange3.</p></li>
-</ul>
+<hr class="docutils" />
+<section id="konfigurasi-model">
+<h2>3. Konfigurasi Model<a class="headerlink" href="#konfigurasi-model" title="Link to this heading">#</a></h2>
+<section id="a-random-forest">
+<h3>A. Random Forest<a class="headerlink" href="#a-random-forest" title="Link to this heading">#</a></h3>
+<p>Model ini dikonfigurasi dengan 10 pohon keputusan dan pembatasan kedalaman maksimal 10 untuk mencegah <em>overfitting</em>.</p>
+<p><img alt="Konfigurasi Random Forest" src="_images/rfl.png" /></p>
 </section>
-<section id="analisis-hasil-evaluasi-test-and-score">
-<h2>4. Analisis Hasil Evaluasi (Test and Score)<a class="headerlink" href="#analisis-hasil-evaluasi-test-and-score" title="Link to this heading">#</a></h2>
-<p>Berdasarkan file <code class="docutils literal notranslate"><span class="pre">hasil_te.png</span></code>, berikut adalah perbandingan performa kedua model:</p>
+<section id="b-naive-bayes">
+<h3>B. Naive Bayes<a class="headerlink" href="#b-naive-bayes" title="Link to this heading">#</a></h3>
+<p>Model ini menggunakan pendekatan probabilistik standar untuk klasifikasi.</p>
+<p><img alt="Konfigurasi Naive Bayes" src="_images/nb_learner.png" /></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="analisis-hasil-evaluasi">
+<h2>4. Analisis Hasil Evaluasi<a class="headerlink" href="#analisis-hasil-evaluasi" title="Link to this heading">#</a></h2>
+<p>Evaluasi dilakukan menggunakan metode pengujian pada data uji (<em>Test on test data</em>).</p>
+<p><img alt="Tabel Performa Model" src="_images/hasil_te.png" /></p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>Model</p></th>
 <th class="head text-center"><p>AUC</p></th>
-<th class="head text-center"><p>Classification Accuracy (CA)</p></th>
-<th class="head text-center"><p>F1 Score</p></th>
+<th class="head text-center"><p>CA (Accuracy)</p></th>
+<th class="head text-center"><p>F1</p></th>
 <th class="head text-center"><p>Precision</p></th>
 <th class="head text-center"><p>Recall</p></th>
 </tr>
@@ -487,41 +490,28 @@ document.write(`
 </tbody>
 </table>
 </div>
-<section id="analisis-metrik">
-<h3>Analisis Metrik:<a class="headerlink" href="#analisis-metrik" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>AUC (Area Under ROC Curve)</strong>: Random Forest (0.903) sedikit lebih unggul dari Naive Bayes (0.892). Hal ini menunjukkan kemampuan pemisahan kelas yang lebih baik pada Random Forest.</p></li>
-<li><p><strong>CA (Akurasi)</strong>: Random Forest mencapai 85,2%, yang berarti 85% data diprediksi dengan benar secara keseluruhan.</p></li>
-<li><p><strong>F1 Score</strong>: Random Forest (0.849) lebih stabil dibandingkan Naive Bayes (0.829) dalam menangani ketidakseimbangan kelas.</p></li>
-</ul>
+<p><strong>Interpretasi:</strong>
+Random Forest mengungguli Naive Bayes di hampir semua kategori metrik, terutama pada akurasi klasifikasi (CA) yang mencapai <strong>85.2%</strong>.</p>
 </section>
-</section>
+<hr class="docutils" />
 <section id="analisis-confusion-matrix">
 <h2>5. Analisis Confusion Matrix<a class="headerlink" href="#analisis-confusion-matrix" title="Link to this heading">#</a></h2>
-<section id="a-random-forest-cm-scorer-png">
-<h3>A. Random Forest (<code class="docutils literal notranslate"><span class="pre">cm_scorer.png</span></code>)<a class="headerlink" href="#a-random-forest-cm-scorer-png" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>True Negative (&lt;=50K)</strong>: 6861 (Berhasil memprediksi pendapatan rendah dengan sangat baik).</p></li>
-<li><p><strong>True Positive (&gt;50K)</strong>: 1461.</p></li>
-<li><p><strong>Kesalahan (Misclassification)</strong>: Terjadi lebih banyak pada kelas <code class="docutils literal notranslate"><span class="pre">&gt;50K</span></code> yang diprediksi sebagai <code class="docutils literal notranslate"><span class="pre">&lt;=50K</span></code> (893 kasus).</p></li>
-</ul>
+<p>Confusion Matrix digunakan untuk melihat seberapa detail model salah memprediksi kelas tertentu.</p>
+<section id="confusion-matrix-random-forest">
+<h3>Confusion Matrix: Random Forest<a class="headerlink" href="#confusion-matrix-random-forest" title="Link to this heading">#</a></h3>
+<p><img alt="Confusion Matrix RF" src="_images/cm_scorer.png" />
+Random Forest sangat kuat dalam memprediksi kelas <code class="docutils literal notranslate"><span class="pre">&lt;=50K</span></code>, namun terdapat 893 kesalahan prediksi pada kelas <code class="docutils literal notranslate"><span class="pre">&gt;50K</span></code> (False Negative).</p>
 </section>
-<section id="b-naive-bayes-cm-scorer-nb-png">
-<h3>B. Naive Bayes (<code class="docutils literal notranslate"><span class="pre">cm_scorer_nb.png</span></code>)<a class="headerlink" href="#b-naive-bayes-cm-scorer-nb-png" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>True Negative (&lt;=50K)</strong>: 6092.</p></li>
-<li><p><strong>True Positive (&gt;50K)</strong>: 1964.</p></li>
-<li><p><strong>Keunikan</strong>: Naive Bayes jauh lebih baik dalam mendeteksi orang dengan pendapatan <code class="docutils literal notranslate"><span class="pre">&gt;50K</span></code> (Recall lebih tinggi untuk kelas positif), namun memiliki tingkat <strong>False Positive</strong> yang tinggi (1322 orang berpendapatan rendah diprediksi sebagai pendapatan tinggi).</p></li>
-</ul>
+<section id="confusion-matrix-naive-bayes">
+<h3>Confusion Matrix: Naive Bayes<a class="headerlink" href="#confusion-matrix-naive-bayes" title="Link to this heading">#</a></h3>
+<p><img alt="Confusion Matrix NB" src="_images/cm_scorer_nb.png" />
+Naive Bayes lebih agresif dalam memprediksi kelas <code class="docutils literal notranslate"><span class="pre">&gt;50K</span></code> (berhasil menangkap 1964 data), tetapi memiliki tingkat <em>False Positive</em> yang tinggi (1322 data <code class="docutils literal notranslate"><span class="pre">&lt;=50K</span></code> salah dikira <code class="docutils literal notranslate"><span class="pre">&gt;50K</span></code>).</p>
 </section>
 </section>
-<section id="kesimpulan">
-<h2>6. Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p><strong>Random Forest</strong> adalah model yang lebih baik secara keseluruhan jika dilihat dari metrik Akurasi (CA) dan AUC. Model ini lebih presisi dan memiliki tingkat kesalahan yang lebih rendah secara total.</p></li>
-<li><p><strong>Naive Bayes</strong> cenderung lebih “berani” dalam memprediksi kelas <code class="docutils literal notranslate"><span class="pre">&gt;50K</span></code>. Jika tujuan bisnis adalah untuk tidak melewatkan potensi orang berpendapatan tinggi (meminimalkan False Negative pada kelas &gt;50K), maka Naive Bayes bisa dipertimbangkan meskipun akurasi totalnya lebih rendah.</p></li>
-<li><p>Untuk dataset ini, <strong>Random Forest</strong> direkomendasikan karena memberikan keseimbangan yang lebih baik antara presisi dan recall.</p></li>
-</ol>
+<hr class="docutils" />
+<section id="kesimpulan-akhir">
+<h2>6. Kesimpulan Akhir<a class="headerlink" href="#kesimpulan-akhir" title="Link to this heading">#</a></h2>
+<p>Model <strong>Random Forest</strong> adalah pilihan terbaik untuk dataset ini jika tujuan utamanya adalah akurasi total. Namun, jika fokusnya adalah mendeteksi sebanyak mungkin orang berpendapatan tinggi (Recall tinggi untuk &gt;50K), maka <strong>Naive Bayes</strong> memberikan hasil yang lebih kompetitif meskipun dengan risiko kesalahan prediksi positif yang lebih besar.</p>
 </section>
 </section>
 
@@ -580,19 +570,20 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan-dataset">1. Ringkasan Dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alur-kerja-workflow-orange3">2. Alur Kerja (Workflow) Orange3</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-model">3. Parameter Model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-hasil-evaluasi-test-and-score">4. Analisis Hasil Evaluasi (Test and Score)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-metrik">Analisis Metrik:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-dataset">1. Penjelasan Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodologi-workflow-orange3">2. Metodologi (Workflow Orange3)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konfigurasi-model">3. Konfigurasi Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-random-forest">A. Random Forest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-naive-bayes">B. Naive Bayes</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-hasil-evaluasi">4. Analisis Hasil Evaluasi</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-confusion-matrix">5. Analisis Confusion Matrix</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-random-forest-cm-scorer-png">A. Random Forest (<code class="docutils literal notranslate"><span class="pre">cm_scorer.png</span></code>)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-naive-bayes-cm-scorer-nb-png">B. Naive Bayes (<code class="docutils literal notranslate"><span class="pre">cm_scorer_nb.png</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix-random-forest">Confusion Matrix: Random Forest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix-naive-bayes">Confusion Matrix: Naive Bayes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">6. Kesimpulan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan-akhir">6. Kesimpulan Akhir</a></li>
 </ul>
   </nav></div>
 
