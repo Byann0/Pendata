@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>My Notebook &#8212; My sample book</title>
+    <title>Laporan Analisis Klasifikasi Prediksi Pendapatan (Dataset Adult) &#8212; My sample book</title>
   
   
   
@@ -57,12 +57,10 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'analisis_randomf';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Pengantar Data Mining" href="pengantardata.html" />
+    <link rel="prev" title="Laporan Analisis Klasifikasi Kesuburan Tanah" href="jawaban.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -125,8 +123,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -145,7 +141,7 @@
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="intro.html">
   
   
   
@@ -176,13 +172,13 @@
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     My Notebook
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="pengantardata.html">Pengantar Data Mining</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bussinessunderstand.html">Business Understanding</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="datasunderstand.html">Data Understanding</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -206,7 +202,7 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="uts.html">Analisa Data Kesuburan Tanah</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jawaban.html">Laporan Analisis Klasifikasi Kesuburan Tanah</a></li>
-<li class="toctree-l1"><a class="reference internal" href="analisis_randomf.html">Laporan Analisis Klasifikasi Prediksi Pendapatan (Dataset Adult)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Laporan Analisis Klasifikasi Prediksi Pendapatan (Dataset Adult)</a></li>
 </ul>
 
     </div>
@@ -278,7 +274,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fanalisis_randomf.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -308,7 +304,7 @@
       
       
       
-      <li><a href="_sources/intro.md" target="_blank"
+      <li><a href="_sources/analisis_randomf.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -379,7 +375,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -390,11 +388,31 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>My Notebook</h1>
+    <h1>Laporan Analisis Klasifikasi Prediksi Pendapatan (Dataset Adult)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan-dataset">1. Ringkasan Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alur-kerja-workflow-orange3">2. Alur Kerja (Workflow) Orange3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-model">3. Parameter Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-hasil-evaluasi-test-and-score">4. Analisis Hasil Evaluasi (Test and Score)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-metrik">Analisis Metrik:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-confusion-matrix">5. Analisis Confusion Matrix</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-random-forest-cm-scorer-png">A. Random Forest (<code class="docutils literal notranslate"><span class="pre">cm_scorer.png</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-naive-bayes-cm-scorer-nb-png">B. Naive Bayes (<code class="docutils literal notranslate"><span class="pre">cm_scorer_nb.png</span></code>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">6. Kesimpulan</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -404,24 +422,107 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="my-notebook">
-<h1>My Notebook<a class="headerlink" href="#my-notebook" title="Link to this heading">#</a></h1>
-<p><strong>Nama</strong>          : Abyan Naufal Yunianto</p>
-<p><strong>NIM</strong>           : 240411100178</p>
-<p><strong>Mata Kuliah</strong>   : Penambangan Data</p>
-<p><strong>Kelas</strong>         : IF 4A</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="pengantardata.html">Pengantar Data Mining</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bussinessunderstand.html">Business Understanding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datasunderstand.html">Data Understanding</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mengukurjarak.html">Data Distance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="preproses.html">Pre-processing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="uts.html">Analisa Data Kesuburan Tanah</a></li>
-<li class="toctree-l1"><a class="reference internal" href="jawaban.html">Laporan Analisis Klasifikasi Kesuburan Tanah</a></li>
-<li class="toctree-l1"><a class="reference internal" href="analisis_randomf.html">Laporan Analisis Klasifikasi Prediksi Pendapatan (Dataset Adult)</a></li>
+  <section class="tex2jax_ignore mathjax_ignore" id="laporan-analisis-klasifikasi-prediksi-pendapatan-dataset-adult">
+<h1>Laporan Analisis Klasifikasi Prediksi Pendapatan (Dataset Adult)<a class="headerlink" href="#laporan-analisis-klasifikasi-prediksi-pendapatan-dataset-adult" title="Link to this heading">#</a></h1>
+<p>Laporan ini menyajikan analisis lengkap mengenai eksperimen machine learning yang dilakukan menggunakan software Orange3 untuk memprediksi kategori pendapatan (income) berdasarkan data demografis.</p>
+<section id="ringkasan-dataset">
+<h2>1. Ringkasan Dataset<a class="headerlink" href="#ringkasan-dataset" title="Link to this heading">#</a></h2>
+<p>Dataset yang digunakan adalah <strong>adult.csv</strong> (sering disebut sebagai dataset ‘Census Income’).</p>
+<ul class="simple">
+<li><p><strong>Target Variabel</strong>: <code class="docutils literal notranslate"><span class="pre">income</span></code> (dua kategori: <code class="docutils literal notranslate"><span class="pre">&lt;=50K</span></code> dan <code class="docutils literal notranslate"><span class="pre">&gt;50K</span></code>).</p></li>
+<li><p><strong>Fitur Utama</strong>: Umur, status pekerjaan, pendidikan, status perkawinan, pekerjaan, ras, jenis kelamin, keuntungan/kerugian modal, dan jam kerja per minggu.</p></li>
 </ul>
+</section>
+<section id="alur-kerja-workflow-orange3">
+<h2>2. Alur Kerja (Workflow) Orange3<a class="headerlink" href="#alur-kerja-workflow-orange3" title="Link to this heading">#</a></h2>
+<p>Berdasarkan tangkapan layar workflow, proses dilakukan sebagai berikut:</p>
+<ol class="arabic simple">
+<li><p><strong>File</strong>: Memuat dataset <code class="docutils literal notranslate"><span class="pre">adult.csv</span></code>.</p></li>
+<li><p><strong>Data Sampler</strong>: Membagi data menjadi data latih (training) dan data uji (testing).</p></li>
+<li><p><strong>Model Klasifikasi</strong>: Dua algoritma digunakan untuk perbandingan:</p>
+<ul class="simple">
+<li><p><strong>Random Forest</strong>: Algoritma berbasis ensemble tree.</p></li>
+<li><p><strong>Naive Bayes</strong>: Algoritma probabilitas berbasis teorema Bayes.</p></li>
+</ul>
+</li>
+<li><p><strong>Test and Score</strong>: Mengevaluasi kinerja model menggunakan data uji.</p></li>
+<li><p><strong>Confusion Matrix</strong>: Visualisasi detail kesalahan prediksi model.</p></li>
+</ol>
+</section>
+<section id="parameter-model">
+<h2>3. Parameter Model<a class="headerlink" href="#parameter-model" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Random Forest</strong>: Menggunakan 10 pohon (trees) dengan opsi “Do not split subsets smaller than 5” dan “Limit maximal tree depth to 10” (seperti terlihat pada <code class="docutils literal notranslate"><span class="pre">rfl.png</span></code>).</p></li>
+<li><p><strong>Naive Bayes</strong>: Menggunakan pengaturan standar Orange3.</p></li>
+</ul>
+</section>
+<section id="analisis-hasil-evaluasi-test-and-score">
+<h2>4. Analisis Hasil Evaluasi (Test and Score)<a class="headerlink" href="#analisis-hasil-evaluasi-test-and-score" title="Link to this heading">#</a></h2>
+<p>Berdasarkan file <code class="docutils literal notranslate"><span class="pre">hasil_te.png</span></code>, berikut adalah perbandingan performa kedua model:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Model</p></th>
+<th class="head text-center"><p>AUC</p></th>
+<th class="head text-center"><p>Classification Accuracy (CA)</p></th>
+<th class="head text-center"><p>F1 Score</p></th>
+<th class="head text-center"><p>Precision</p></th>
+<th class="head text-center"><p>Recall</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Random Forest</strong></p></td>
+<td class="text-center"><p><strong>0.903</strong></p></td>
+<td class="text-center"><p><strong>0.852</strong></p></td>
+<td class="text-center"><p><strong>0.849</strong></p></td>
+<td class="text-center"><p><strong>0.847</strong></p></td>
+<td class="text-center"><p><strong>0.852</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Naive Bayes</strong></p></td>
+<td class="text-center"><p>0.892</p></td>
+<td class="text-center"><p>0.825</p></td>
+<td class="text-center"><p>0.829</p></td>
+<td class="text-center"><p>0.838</p></td>
+<td class="text-center"><p>0.825</p></td>
+</tr>
+</tbody>
+</table>
 </div>
+<section id="analisis-metrik">
+<h3>Analisis Metrik:<a class="headerlink" href="#analisis-metrik" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>AUC (Area Under ROC Curve)</strong>: Random Forest (0.903) sedikit lebih unggul dari Naive Bayes (0.892). Hal ini menunjukkan kemampuan pemisahan kelas yang lebih baik pada Random Forest.</p></li>
+<li><p><strong>CA (Akurasi)</strong>: Random Forest mencapai 85,2%, yang berarti 85% data diprediksi dengan benar secara keseluruhan.</p></li>
+<li><p><strong>F1 Score</strong>: Random Forest (0.849) lebih stabil dibandingkan Naive Bayes (0.829) dalam menangani ketidakseimbangan kelas.</p></li>
+</ul>
+</section>
+</section>
+<section id="analisis-confusion-matrix">
+<h2>5. Analisis Confusion Matrix<a class="headerlink" href="#analisis-confusion-matrix" title="Link to this heading">#</a></h2>
+<section id="a-random-forest-cm-scorer-png">
+<h3>A. Random Forest (<code class="docutils literal notranslate"><span class="pre">cm_scorer.png</span></code>)<a class="headerlink" href="#a-random-forest-cm-scorer-png" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>True Negative (&lt;=50K)</strong>: 6861 (Berhasil memprediksi pendapatan rendah dengan sangat baik).</p></li>
+<li><p><strong>True Positive (&gt;50K)</strong>: 1461.</p></li>
+<li><p><strong>Kesalahan (Misclassification)</strong>: Terjadi lebih banyak pada kelas <code class="docutils literal notranslate"><span class="pre">&gt;50K</span></code> yang diprediksi sebagai <code class="docutils literal notranslate"><span class="pre">&lt;=50K</span></code> (893 kasus).</p></li>
+</ul>
+</section>
+<section id="b-naive-bayes-cm-scorer-nb-png">
+<h3>B. Naive Bayes (<code class="docutils literal notranslate"><span class="pre">cm_scorer_nb.png</span></code>)<a class="headerlink" href="#b-naive-bayes-cm-scorer-nb-png" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>True Negative (&lt;=50K)</strong>: 6092.</p></li>
+<li><p><strong>True Positive (&gt;50K)</strong>: 1964.</p></li>
+<li><p><strong>Keunikan</strong>: Naive Bayes jauh lebih baik dalam mendeteksi orang dengan pendapatan <code class="docutils literal notranslate"><span class="pre">&gt;50K</span></code> (Recall lebih tinggi untuk kelas positif), namun memiliki tingkat <strong>False Positive</strong> yang tinggi (1322 orang berpendapatan rendah diprediksi sebagai pendapatan tinggi).</p></li>
+</ul>
+</section>
+</section>
+<section id="kesimpulan">
+<h2>6. Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Random Forest</strong> adalah model yang lebih baik secara keseluruhan jika dilihat dari metrik Akurasi (CA) dan AUC. Model ini lebih presisi dan memiliki tingkat kesalahan yang lebih rendah secara total.</p></li>
+<li><p><strong>Naive Bayes</strong> cenderung lebih “berani” dalam memprediksi kelas <code class="docutils literal notranslate"><span class="pre">&gt;50K</span></code>. Jika tujuan bisnis adalah untuk tidak melewatkan potensi orang berpendapatan tinggi (meminimalkan False Negative pada kelas &gt;50K), maka Naive Bayes bisa dipertimbangkan meskipun akurasi totalnya lebih rendah.</p></li>
+<li><p>Untuk dataset ini, <strong>Random Forest</strong> direkomendasikan karena memberikan keseimbangan yang lebih baik antara presisi dan recall.</p></li>
+</ol>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -454,14 +555,14 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="right-next"
-       href="pengantardata.html"
-       title="next page">
+    <a class="left-prev"
+       href="jawaban.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Pengantar Data Mining</p>
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Laporan Analisis Klasifikasi Kesuburan Tanah</p>
       </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -469,6 +570,33 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan-dataset">1. Ringkasan Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alur-kerja-workflow-orange3">2. Alur Kerja (Workflow) Orange3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-model">3. Parameter Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-hasil-evaluasi-test-and-score">4. Analisis Hasil Evaluasi (Test and Score)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-metrik">Analisis Metrik:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-confusion-matrix">5. Analisis Confusion Matrix</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-random-forest-cm-scorer-png">A. Random Forest (<code class="docutils literal notranslate"><span class="pre">cm_scorer.png</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-naive-bayes-cm-scorer-nb-png">B. Naive Bayes (<code class="docutils literal notranslate"><span class="pre">cm_scorer_nb.png</span></code>)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">6. Kesimpulan</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
