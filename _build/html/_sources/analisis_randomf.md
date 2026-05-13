@@ -18,7 +18,7 @@ Dataset **adult.csv** (Census Income) digunakan untuk memprediksi apakah pendapa
 
 Proses analisis dilakukan dengan alur kerja visual berikut:
 
-![Workflow Analisis](/gambar/randomforest/Screenshot%202026-05-13%20091440.png)
+![Workflow Analisis](/gambar/randomforest/workflow.png)
 
 Alur kerja mencakup pemuatan data, pengambilan sampel (*Data Sampler*), pelatihan model (**Random Forest** & **Naive Bayes**), serta evaluasi hasil.
 
