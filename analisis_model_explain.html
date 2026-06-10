@@ -494,9 +494,47 @@ Setelah model selesai dilatih, panduan ini melakukan eksperimen menggunakan 4 te
 <ol class="arabic simple">
 <li><p>Instalasi Library</p></li>
 </ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pip install skforecast==0.15.1 lightgbm shap
-!pip install pandas numpy matplotlib shap scikit-learn lightgbm skforeca...
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">skforecast</span><span class="o">==</span><span class="m">0</span>.15.1<span class="w"> </span>shap
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: skforecast==0.15.1 in C:\Users\Dell\miniconda3\Lib\site-packages (0.15.1)
+Requirement already satisfied: shap in C:\Users\Dell\miniconda3\Lib\site-packages (0.52.0)
+Requirement already satisfied: numpy&gt;=1.24 in C:\Users\Dell\miniconda3\Lib\site-packages (from skforecast==0.15.1) (2.4.6)
+Requirement already satisfied: pandas&gt;=1.5 in C:\Users\Dell\miniconda3\Lib\site-packages (from skforecast==0.15.1) (3.0.3)
+Requirement already satisfied: tqdm&gt;=4.57 in C:\Users\Dell\miniconda3\Lib\site-packages (from skforecast==0.15.1) (4.67.3)
+Requirement already satisfied: scikit-learn&gt;=1.2 in C:\Users\Dell\miniconda3\Lib\site-packages (from skforecast==0.15.1) (1.8.0)
+Requirement already satisfied: optuna&gt;=2.10 in C:\Users\Dell\miniconda3\Lib\site-packages (from skforecast==0.15.1) (4.9.0)
+Requirement already satisfied: joblib&gt;=1.1 in C:\Users\Dell\miniconda3\Lib\site-packages (from skforecast==0.15.1) (1.5.3)
+Requirement already satisfied: numba&gt;=0.59 in C:\Users\Dell\miniconda3\Lib\site-packages (from skforecast==0.15.1) (0.65.1)
+Requirement already satisfied: rich&gt;=13.9 in C:\Users\Dell\miniconda3\Lib\site-packages (from skforecast==0.15.1) (14.2.0)
+Requirement already satisfied: scipy in C:\Users\Dell\miniconda3\Lib\site-packages (from shap) (1.17.1)
+Requirement already satisfied: packaging&gt;20.9 in C:\Users\Dell\miniconda3\Lib\site-packages (from shap) (25.0)
+Requirement already satisfied: slicer==0.0.8 in C:\Users\Dell\miniconda3\Lib\site-packages (from shap) (0.0.8)
+Requirement already satisfied: llvmlite in C:\Users\Dell\miniconda3\Lib\site-packages (from shap) (0.47.0)
+Requirement already satisfied: cloudpickle in C:\Users\Dell\miniconda3\Lib\site-packages (from shap) (3.1.2)
+Requirement already satisfied: alembic&gt;=1.5.0 in C:\Users\Dell\miniconda3\Lib\site-packages (from optuna&gt;=2.10-&gt;skforecast==0.15.1) (1.18.4)
+Requirement already satisfied: colorlog in C:\Users\Dell\miniconda3\Lib\site-packages (from optuna&gt;=2.10-&gt;skforecast==0.15.1) (6.10.1)
+Requirement already satisfied: sqlalchemy&gt;=1.4.2 in C:\Users\Dell\miniconda3\Lib\site-packages (from optuna&gt;=2.10-&gt;skforecast==0.15.1) (2.0.50)
+Requirement already satisfied: PyYAML in C:\Users\Dell\miniconda3\Lib\site-packages (from optuna&gt;=2.10-&gt;skforecast==0.15.1) (6.0.3)
+Requirement already satisfied: Mako in C:\Users\Dell\miniconda3\Lib\site-packages (from alembic&gt;=1.5.0-&gt;optuna&gt;=2.10-&gt;skforecast==0.15.1) (1.3.12)
+Requirement already satisfied: typing-extensions&gt;=4.12 in C:\Users\Dell\miniconda3\Lib\site-packages (from alembic&gt;=1.5.0-&gt;optuna&gt;=2.10-&gt;skforecast==0.15.1) (4.15.0)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in C:\Users\Dell\miniconda3\Lib\site-packages (from pandas&gt;=1.5-&gt;skforecast==0.15.1) (2.9.0.post0)
+Requirement already satisfied: tzdata in C:\Users\Dell\miniconda3\Lib\site-packages (from pandas&gt;=1.5-&gt;skforecast==0.15.1) (2026.2)
+Requirement already satisfied: six&gt;=1.5 in C:\Users\Dell\miniconda3\Lib\site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas&gt;=1.5-&gt;skforecast==0.15.1) (1.17.0)
+Requirement already satisfied: markdown-it-py&gt;=2.2.0 in C:\Users\Dell\miniconda3\Lib\site-packages (from rich&gt;=13.9-&gt;skforecast==0.15.1) (4.0.0)
+Requirement already satisfied: pygments&lt;3.0.0,&gt;=2.13.0 in C:\Users\Dell\miniconda3\Lib\site-packages (from rich&gt;=13.9-&gt;skforecast==0.15.1) (2.19.2)
+Requirement already satisfied: mdurl~=0.1 in C:\Users\Dell\miniconda3\Lib\site-packages (from markdown-it-py&gt;=2.2.0-&gt;rich&gt;=13.9-&gt;skforecast==0.15.1) (0.1.2)
+Requirement already satisfied: threadpoolctl&gt;=3.2.0 in C:\Users\Dell\miniconda3\Lib\site-packages (from scikit-learn&gt;=1.2-&gt;skforecast==0.15.1) (3.6.0)
+Requirement already satisfied: greenlet&gt;=1 in C:\Users\Dell\miniconda3\Lib\site-packages (from sqlalchemy&gt;=1.4.2-&gt;optuna&gt;=2.10-&gt;skforecast==0.15.1) (3.5.1)
+Requirement already satisfied: colorama in C:\Users\Dell\miniconda3\Lib\site-packages (from tqdm&gt;=4.57-&gt;skforecast==0.15.1) (0.4.6)
+Requirement already satisfied: MarkupSafe&gt;=0.9.2 in C:\Users\Dell\miniconda3\Lib\site-packages (from Mako-&gt;alembic&gt;=1.5.0-&gt;optuna&gt;=2.10-&gt;skforecast==0.15.1) (3.0.3)
+</pre></div>
+</div>
+</div>
 </div>
 <p>Penjelasan: Perintah ini mengunduh dan memasang skforecast versi 0.15.1, lightgbm sebagai algoritma regresi, dan shap untuk keperluan visualisasi kontribusi fitur.</p>
 <ol class="arabic simple" start="2">
@@ -522,7 +560,7 @@ Setelah model selesai dilatih, panduan ini melakukan eksperimen menggunakan 4 te
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">import</span><span class="w"> </span><span class="nn">shap</span>
@@ -747,7 +785,7 @@ Jumlah data training: 1087 hari
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/79a97eff67297efd835783ebae987a0d76e93269365daaf987c8466bdf998ee0.png" src="_images/79a97eff67297efd835783ebae987a0d76e93269365daaf987c8466bdf998ee0.png" />
+<img alt="_images/1e3e9401b6a8920f225c167c7c1f67897639824b8a503fb7d52ba4bb0d14aa92.png" src="_images/1e3e9401b6a8920f225c167c7c1f67897639824b8a503fb7d52ba4bb0d14aa92.png" />
 </div>
 </div>
 <p>Penjelasan: Kita harus mengekstrak matriks input buatan Skforecast terlebih dahulu menggunakan create_train_X_y. SHAP Summary Plot akan menampilkan sebaran titik kontribusi tiap fitur. Fitur di urutan paling atas adalah yang memberikan dampak perubahan paling besar terhadap prediksi beban listrik harian.</p>
