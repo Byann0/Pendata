@@ -25,3 +25,4 @@ chapters:
 - file: jawaban
 - file: analisis_naivebayes
 - file: analisis_randomf
+- file: analisis_model_explain
