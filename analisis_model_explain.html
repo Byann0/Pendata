@@ -1,0 +1,1012 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Analisis Model Explainability - Skforecast 0.15.1 &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'analisis_model_explain';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Laporan Analisis Klasifikasi Prediksi Pendapatan (Dataset Adult)" href="analisis_randomf.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    My Notebook
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pengantardata.html">Pengantar Data Mining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bussinessunderstand.html">Business Understanding</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="datasunderstand.html">Data Understanding</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="datairis.html">Data Iris Flower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ukur_iris.html">Pengukuran Jarak (Dissimilarity Matrix)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="mengukurjarak.html">Data Distance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="eksplor_campuran.html">Eksplorasi Data Campuran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ukurdata_campuran.html">Pengukuran Jarak Data Campuran</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="preproses.html">Pre-processing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="macam_normalisasi.html">Normalisasi Data</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="knn.html">K-Nearest Neighbors (K-NN)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="missing_value.html">Mencari Missing Value</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="wknn.html">WKNN</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="uts.html">Analisa Data Kesuburan Tanah</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jawaban.html">Laporan Analisis Klasifikasi Kesuburan Tanah</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analisis_randomf.html">Laporan Analisis Klasifikasi Prediksi Pendapatan (Dataset Adult)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Analisis Model Explainability - Skforecast 0.15.1</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fanalisis_model_explain.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/analisis_model_explain.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Analisis Model Explainability - Skforecast 0.15.1</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisa-prediksi-tentang-apa">1. Analisa prediksi tentang apa?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagaimana-bentuk-data-trainingnya-apa-saja-input-dan-outputnya">2. Bagaimana bentuk data trainingnya (apa saja input dan         outputnya)?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-lag">3. Apa itu lag?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jelaskan-proses-analysis-yang-dilakukan-dari-kasus-diatas">4. Jelaskan proses analysis yang dilakukan dari kasus diatas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reproduct-ulang-kode-program">Reproduct ulang Kode Program</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="analisis-model-explainability-skforecast-0-15-1">
+<h1>Analisis Model Explainability - Skforecast 0.15.1<a class="headerlink" href="#analisis-model-explainability-skforecast-0-15-1" title="Link to this heading">#</a></h1>
+<section id="analisa-prediksi-tentang-apa">
+<h2>1. Analisa prediksi tentang apa?<a class="headerlink" href="#analisa-prediksi-tentang-apa" title="Link to this heading">#</a></h2>
+<p>Analisis prediksi dalam panduan tersebut adalah mengenai prakiraan (forecasting) permintaan listrik harian (electricity demand) di Victoria, Australia menggunakan dataset vic_electricity.</p>
+<p>Tujuan utamanya adalah memprediksi total konsumsi energi listrik harian berdasarkan pola konsumsi di masa lalu serta pengaruh dari faktor eksternal, yaitu suhu udara.</p>
+</section>
+<section id="bagaimana-bentuk-data-trainingnya-apa-saja-input-dan-outputnya">
+<h2>2. Bagaimana bentuk data trainingnya (apa saja input dan         outputnya)?<a class="headerlink" href="#bagaimana-bentuk-data-trainingnya-apa-saja-input-dan-outputnya" title="Link to this heading">#</a></h2>
+<p>Sebelum dimasukkan ke dalam model, data mentah yang berfrekuensi per 30 menit diakumulasikan (resample) menjadi frekuensi harian (‘D’). Bentuk matriks training (<span class="math notranslate nohighlight">\(X\)</span> dan <span class="math notranslate nohighlight">\(y\)</span>) yang dikonstruasikan oleh Skforecast terdiri dari:</p>
+<ul class="simple">
+<li><p>Input (Fitur / Predictors / <span class="math notranslate nohighlight">\(X_{train}\)</span>):</p>
+<ul>
+<li><p>Lags (lag_1 sampai lag_7): Nilai total permintaan listrik dari 1 hingga 7 hari sebelumnya (1 minggu ke belakang).</p></li>
+<li><p>Exogenous Variable (Temperature): Nilai rata-rata suhu udara harian pada hari yang diprediksi. Suhu digunakan sebagai input luar (eksogen) karena memiliki korelasi kuat dengan penggunaan alat pemanas atau pendingin ruangan yang memengaruhi beban listrik.</p></li>
+</ul>
+</li>
+<li><p>Output (Target / <span class="math notranslate nohighlight">\(y_{train}\)</span>):</p>
+<ul>
+<li><p>Demand: Jumlah total permintaan listrik pada hari yang bersangkutan (nilai aktual yang ingin ditebak oleh model).</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="apa-itu-lag">
+<h2>3. Apa itu lag?<a class="headerlink" href="#apa-itu-lag" title="Link to this heading">#</a></h2>
+<p>Dalam analisis deret waktu (time series forecasting), lag (keterlambatan/selisih waktu) adalah nilai historis dari variabel target pada titik waktu sebelumnya.Sebagai contoh, jika kita ingin memprediksi permintaan listrik untuk hari ini (Hari <span class="math notranslate nohighlight">\(t\)</span>):</p>
+<ul class="simple">
+<li><p>lag_1: Nilai permintaan listrik 1 hari yang lalu (kemarin / <span class="math notranslate nohighlight">\(t-1\)</span>).</p></li>
+<li><p>lag_2: Nilai permintaan listrik 2 hari yang lalu (<span class="math notranslate nohighlight">\(t-2\)</span>).</p></li>
+<li><p>lag_7: Nilai permintaan listrik 7 hari yang lalu (seminggu yang lalu / <span class="math notranslate nohighlight">\(t-7\)</span>).</p></li>
+</ul>
+<p>Lag digunakan sebagai fitur input agar algoritma machine learning berbasis regresi (seperti LightGBM) dapat mempelajari pola tren dan musiman (seasonality) dari data masa lalu demi memproyeksikan nilai di masa depan.</p>
+</section>
+<section id="jelaskan-proses-analysis-yang-dilakukan-dari-kasus-diatas">
+<h2>4. Jelaskan proses analysis yang dilakukan dari kasus diatas<a class="headerlink" href="#jelaskan-proses-analysis-yang-dilakukan-dari-kasus-diatas" title="Link to this heading">#</a></h2>
+<p>Proses analisis yang berjalan dalam panduan tersebut terbagi menjadi beberapa tahapan end-to-end berikut ini:</p>
+<ol class="arabic simple">
+<li><p>Persiapan Library dan Data (Libraries and Data Loading):</p>
+<ul class="simple">
+<li><p>Mengimpor library utama seperti pandas, skforecast (ForecasterRecursive), lightgbm (LGBMRegressor), shap, dan fungsi visualisasi dari sklearn.</p></li>
+<li><p>Mengunduh dataset vic_electricity.</p></li>
+</ul>
+</li>
+<li><p>Pra-pemrosesan Data (Data Preprocessing &amp; Resampling):</p>
+<ul class="simple">
+<li><p>Mengubah data dari interval 30 menitan menjadi harian. Kolom Demand dijumlahkan (sum) untuk mendapatkan total harian, sedangkan kolom Temperature dirata-ratakan (mean).</p></li>
+</ul>
+</li>
+<li><p>Pembagian Data Pembelajaran (Train-Test Split):</p>
+<ul class="simple">
+<li><p>Data dipotong menjadi data training (data_train) dari awal data hingga tanggal 21 Desember 2014, dan sisanya digunakan sebagai data pengujian (data_test).</p></li>
+</ul>
+</li>
+<li><p>Inisialisasi dan Pelatihan Model (Create and Train Forecaster):</p>
+<ul class="simple">
+<li><p>Membuat objek ForecasterRecursive dengan menyematkan regressor LGBMRegressor di dalamnya dan menentukan jumlah lags = 7.</p></li>
+<li><p>Melatih model menggunakan fungsi .fit() dengan memasukkan target <span class="math notranslate nohighlight">\(y\)</span> (Demand) dan variabel eksogen (Temperature).</p></li>
+</ul>
+</li>
+<li><p>Analisis Transparansi Model (Model Explainability):
+Setelah model selesai dilatih, panduan ini melakukan eksperimen menggunakan 4 teknik interpretabilitas untuk memahami bagaimana model mengambil keputusan (membongkar sifat black-box):</p>
+<ul class="simple">
+<li><p>Model-Specific Feature Importance: Mengambil bobot kepentingan fitur bawaan dari LightGBM menggunakan forecaster.get_feature_importances(). Hasilnya menunjukkan bahwa fitur Temperature dan lag_1 (permintaan kemarin) menjadi faktor paling dominan dalam pembentukan pohon keputusan.</p></li>
+<li><p>SHAP Values (Shapley Additive exPlanations): Menggunakan library shap untuk menghitung kontribusi tiap fitur secara aditif. Hal ini membantu memvisualisasikan dampak positif/negatif dari nilai fitur tertentu terhadap hasil prediksi (baik secara keseluruhan melalui Summary Plot maupun secara spesifik per observasi).</p></li>
+<li><p>Permutation Feature Importance: Melakukan pengacakan nilai pada satu fitur tertentu, lalu mengukur seberapa jatuh performa akurasi model. Fitur yang menyebabkan performa drop paling besar ketika diacak mengindikasikan bahwa model sangat bergantung pada fitur tersebut (dalam kasus ini lag_1 memiliki pengaruh permutation tertinggi).</p></li>
+<li><p>Partial Dependence Plots (PDP): Membuat grafik untuk melihat hubungan marginal antara satu atau dua fitur (misal: naik turunnya suhu udara) terhadap prediksi permintaan listrik dengan mengasumsikan fitur-fitur lainnya konstan.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="reproduct-ulang-kode-program">
+<h2>Reproduct ulang Kode Program<a class="headerlink" href="#reproduct-ulang-kode-program" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Instalasi Library</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pip install skforecast==0.15.1 lightgbm shap
+!pip install pandas numpy matplotlib shap scikit-learn lightgbm skforeca...
+</pre></div>
+</div>
+<p>Penjelasan: Perintah ini mengunduh dan memasang skforecast versi 0.15.1, lightgbm sebagai algoritma regresi, dan shap untuk keperluan visualisasi kontribusi fitur.</p>
+<ol class="arabic simple" start="2">
+<li><p>Import Library</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">shap</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.inspection</span><span class="w"> </span><span class="kn">import</span> <span class="n">permutation_importance</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.inspection</span><span class="w"> </span><span class="kn">import</span> <span class="n">PartialDependenceDisplay</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lightgbm</span><span class="w"> </span><span class="kn">import</span> <span class="n">LGBMRegressor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skforecast.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">fetch_dataset</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skforecast.recursive</span><span class="w"> </span><span class="kn">import</span> <span class="n">ForecasterRecursive</span>
+
+<span class="c1"># Mengaktifkan visualisasi javascript untuk SHAP di notebook</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">initjs</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">import</span><span class="w"> </span><span class="nn">shap</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.inspection</span><span class="w"> </span><span class="kn">import</span> <span class="n">permutation_importance</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.inspection</span><span class="w"> </span><span class="kn">import</span> <span class="n">PartialDependenceDisplay</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;shap&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Penjelasan: Kita mengimpor ForecasterRecursive dari Skforecast untuk menangani prediksi multi-step secara rekursif, LGBMRegressor sebagai mesin kecerdasan buatan, serta fungsi inspeksi dari sklearn untuk menghitung tingkat kepentingan fitur (permutation &amp; partial dependence).</p>
+<ol class="arabic simple" start="3">
+<li><p>Pemuatan dan penyiapan Dataset</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Ambil dataset listrik dari Victoria, Australia</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">fetch_dataset</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;vic_electricity&quot;</span><span class="p">)</span>
+
+<span class="c1"># 2. Resample (mengubah frekuensi) menjadi Harian (&#39;D&#39;)</span>
+<span class="c1"># Total permintaan listrik dijumlahkan, rata-rata suhu dihitung per hari</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;Demand&#39;</span><span class="p">:</span> <span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;Temperature&#39;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span><span class="p">})</span>
+
+<span class="c1"># 3. Memisahkan data menjadi Training dan Testing</span>
+<span class="n">data_train</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span> <span class="s1">&#39;2014-12-21&#39;</span><span class="p">]</span>
+<span class="n">data_test</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2014-12-22&#39;</span><span class="p">:]</span>
+
+<span class="c1"># Tampilkan 3 data teratas dari data training</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah data training: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data_train</span><span class="p">)</span><span class="si">}</span><span class="s2"> hari&quot;</span><span class="p">)</span>
+<span class="n">data_train</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>vic_electricity
+---------------
+Half-hourly electricity demand for Victoria, Australia
+O&#39;Hara-Wild M, Hyndman R, Wang E, Godahewa R (2022).tsibbledata: Diverse
+Datasets for &#39;tsibble&#39;. https://tsibbledata.tidyverts.org/,
+https://github.com/tidyverts/tsibbledata/.
+https://tsibbledata.tidyverts.org/reference/vic_elec.html
+Shape of the dataset: (52608, 4)
+Jumlah data training: 1087 hari
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Demand</th>
+      <th>Temperature</th>
+    </tr>
+    <tr>
+      <th>Time</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2011-12-31</th>
+      <td>82531.745918</td>
+      <td>21.047727</td>
+    </tr>
+    <tr>
+      <th>2012-01-01</th>
+      <td>227778.257304</td>
+      <td>26.578125</td>
+    </tr>
+    <tr>
+      <th>2012-01-02</th>
+      <td>275490.988882</td>
+      <td>31.751042</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Penjelasan: Data mentah berfrekuensi 30 menit terlalu padat. Kita melakukan resampling ke skala harian (‘D’). Kolom target adalah Demand (total energi harian) dan variabel pembantu (exogenous) adalah Temperature (rata-rata suhu harian). Data dilatih hingga tanggal 21 Desember 2014.</p>
+<ol class="arabic simple" start="4">
+<li><p>Membuat dan melatih Model Forecaster</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inisialisasi objek peramal rekursif</span>
+<span class="n">forecaster</span> <span class="o">=</span> <span class="n">ForecasterRecursive</span><span class="p">(</span>
+    <span class="n">regressor</span> <span class="o">=</span> <span class="n">LGBMRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">lags</span> <span class="o">=</span> <span class="mi">7</span>  <span class="c1"># Menggunakan data 7 hari ke belakang sebagai input otomatis</span>
+<span class="p">)</span>
+
+<span class="c1"># Melatih model dengan menyertakan variabel eksogen (Suhu)</span>
+<span class="n">forecaster</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">data_train</span><span class="p">[</span><span class="s1">&#39;Demand&#39;</span><span class="p">],</span>
+    <span class="n">exog</span> <span class="o">=</span> <span class="n">data_train</span><span class="p">[</span><span class="s1">&#39;Temperature&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model selesai dilatih!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model selesai dilatih!
+</pre></div>
+</div>
+</div>
+</div>
+<p>Penjelasan: ForecasterRecursive akan otomatis mengubah deret waktu menjadi matriks regresi terbimbing (supervised learning). Model ini memprediksi Demand hari esok berdasarkan pola Demand 7 hari ke belakang (lags=7) digabungkan dengan informasi Temperature hari esok tersebut.</p>
+<ol class="arabic simple" start="5">
+<li><p>Teknik 1-Model Specific Feature Importance</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mengambil tingkat kepentingan fitur bawaan dari regressor</span>
+<span class="n">feature_importances</span> <span class="o">=</span> <span class="n">forecaster</span><span class="o">.</span><span class="n">get_feature_importances</span><span class="p">()</span>
+<span class="n">feature_importances</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>feature</th>
+      <th>importance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>7</th>
+      <td>Temperature</td>
+      <td>570</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>lag_1</td>
+      <td>470</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>lag_3</td>
+      <td>387</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>lag_2</td>
+      <td>362</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>lag_7</td>
+      <td>325</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>lag_6</td>
+      <td>313</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>lag_5</td>
+      <td>298</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>lag_4</td>
+      <td>275</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Penjelasan: Fungsi get_feature_importances() mengakses langsung bobot internal model LightGBM. Hasilnya akan memunculkan tabel nilai kepentingan untuk Temperature serta lag_1 sampai lag_7. Biasanya, Temperature dan lag_1 (nilai kemarin) memegang skor tertinggi.</p>
+<ol class="arabic simple" start="6">
+<li><p>Teknik 2-Global SHAP Values (Membuat Matriks Training &amp; Explainer)</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Ekstrak matriks X (input) dan y (output) yang dibuat oleh forecaster secara internal</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">forecaster</span><span class="o">.</span><span class="n">create_train_X_y</span><span class="p">(</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">data_train</span><span class="p">[</span><span class="s1">&#39;Demand&#39;</span><span class="p">],</span>
+    <span class="n">exog</span> <span class="o">=</span> <span class="n">data_train</span><span class="p">[</span><span class="s1">&#39;Temperature&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># 2. Membuat SHAP explainer khusus untuk model berbasis pohon (TreeExplainer)</span>
+<span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">TreeExplainer</span><span class="p">(</span><span class="n">forecaster</span><span class="o">.</span><span class="n">regressor</span><span class="p">)</span>
+<span class="n">shap_values</span> <span class="o">=</span> <span class="n">explainer</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+
+<span class="c1"># 3. Membuat Summary Plot SHAP</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">summary_plot</span><span class="p">(</span><span class="n">shap_values</span><span class="p">,</span> <span class="n">X_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/79a97eff67297efd835783ebae987a0d76e93269365daaf987c8466bdf998ee0.png" src="_images/79a97eff67297efd835783ebae987a0d76e93269365daaf987c8466bdf998ee0.png" />
+</div>
+</div>
+<p>Penjelasan: Kita harus mengekstrak matriks input buatan Skforecast terlebih dahulu menggunakan create_train_X_y. SHAP Summary Plot akan menampilkan sebaran titik kontribusi tiap fitur. Fitur di urutan paling atas adalah yang memberikan dampak perubahan paling besar terhadap prediksi beban listrik harian.</p>
+<ol class="arabic simple" start="7">
+<li><p>Teknik 3-Permutation Feature Importance</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menghitung permutation importance pada data training</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">permutation_importance</span><span class="p">(</span>
+    <span class="n">estimator</span> <span class="o">=</span> <span class="n">forecaster</span><span class="o">.</span><span class="n">regressor</span><span class="p">,</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">,</span>
+    <span class="n">n_repeats</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>      <span class="c1"># Pengacakan diulang 3 kali untuk stabilitas</span>
+    <span class="n">max_samples</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>  <span class="c1"># Menggunakan 50% sampel data demi kecepatan</span>
+    <span class="n">random_state</span> <span class="o">=</span> <span class="mi">123</span>
+<span class="p">)</span>
+
+<span class="c1"># Menyusun hasil pengacakan ke dalam DataFrame</span>
+<span class="n">importances</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;feature&#39;</span><span class="p">:</span> <span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+    <span class="s1">&#39;mean_importance&#39;</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">importances_mean</span><span class="p">,</span>
+    <span class="s1">&#39;std_importance&#39;</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">importances_std</span>
+<span class="p">})</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;mean_importance&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">importances</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>feature</th>
+      <th>mean_importance</th>
+      <th>std_importance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>lag_1</td>
+      <td>0.617276</td>
+      <td>0.014583</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Temperature</td>
+      <td>0.411240</td>
+      <td>0.014405</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>lag_7</td>
+      <td>0.196190</td>
+      <td>0.001865</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>lag_2</td>
+      <td>0.122398</td>
+      <td>0.007803</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>lag_6</td>
+      <td>0.083912</td>
+      <td>0.003637</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>lag_3</td>
+      <td>0.041294</td>
+      <td>0.002019</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>lag_5</td>
+      <td>0.030787</td>
+      <td>0.001079</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>lag_4</td>
+      <td>0.024816</td>
+      <td>0.001021</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Penjelasan: Jika suatu fitur diacak-acak nilainya (permutation) dan performa eror model meningkat tajam (skor mean_importance besar), artinya model tersebut sangat bergantung pada fitur tersebut. Dari pengujian ini, kita dapat memvalidasi apakah lag_1 atau Temperature benar-benar pilar utama prediksi.</p>
+<ol class="arabic simple" start="8">
+<li><p>Teknik 4-Partial Dependence Plots</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Membuat grafik Partial Dependence untuk fitur &#39;Temperature&#39; dan &#39;lag_1&#39;</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">PartialDependenceDisplay</span><span class="o">.</span><span class="n">from_estimator</span><span class="p">(</span>
+    <span class="n">estimator</span> <span class="o">=</span> <span class="n">forecaster</span><span class="o">.</span><span class="n">regressor</span><span class="p">,</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">,</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Temperature&#39;</span><span class="p">,</span> <span class="s1">&#39;lag_1&#39;</span><span class="p">],</span> <span class="c1"># Fitur yang ingin diisolasi trennya</span>
+    <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;average&#39;</span><span class="p">,</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1041594541082143554c5327bec037abeb2b8cc8a332ed383a1899f17360381d.png" src="_images/1041594541082143554c5327bec037abeb2b8cc8a332ed383a1899f17360381d.png" />
+</div>
+</div>
+<p>Penjelasan: PDP mengisolasi efek dari satu fitur tertentu dengan mengasumsikan nilai fitur lainnya konstan/rata-rata. Grafik ini sangat berguna untuk melihat sifat hubungan non-linear, misalnya: kita bisa melihat grafik permintaan listrik melengkung naik tajam saat Temperature sangat dingin (butuh pemanas) atau saat sangat panas (butuh pendingin ruangan/AC).</p>
+</section>
+<section id="kesimpulan">
+<h2>Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h2>
+<p>Kesimpulan Analisis Model Explainability
+Berdasarkan seluruh rangkaian proses reproduksi kode dan analisis yang telah kita lakukan, berikut adalah kesimpulan utama yang dapat ditarik:</p>
+<ul>
+<li><p>Pola Konsumsi Energi Sangat Dependen pada Waktu Lampau (Momentum): Fitur lag_1 (permintaan listrik kemarin) dan lag_7 (permintaan listrik seminggu yang lalu) terbukti menjadi pilar utama prediksi model. Ini menunjukkan bahwa konsumsi listrik harian memiliki pola musiman mingguan yang berulang (misalnya, pola hari Senin mirip dengan hari Senin berikutnya) serta ketergantungan jangka pendek yang kuat.</p></li>
+<li><p>Suhu Udara Adalah Pemicu Utama Fluktuasi Ekstrem: Meskipun lag mendominasi pola dasar harian, Temperature bertindak sebagai variabel pengubah (game changer). Melalui grafik Partial Dependence Plot (PDP), kita dapat menyimpulkan bahwa hubungan antara suhu dan permintaan listrik bersifat non-linear (membentuk kurva U). Permintaan listrik akan melonjak tajam dalam dua kondisi ekstrem: saat suhu sangat dingin (masyarakat menyalakan pemanas ruangan) dan saat suhu sangat panas (masyarakat menyalakan AC).</p></li>
+<li><p>Pentingnya Membongkar “Black Box” Model: Algoritma canggih seperti LightGBM sering kali akurat tetapi sulit dipahami secara intuitif. Dengan memanfaatkan kombinasi teknik Explainability (Feature Importance, SHAP, Permutation, dan PDP), kita tidak hanya mendapatkan model yang siap melakukan prediksi, tetapi juga mendapatkan wawasan bisnis (business insights) yang berharga dan transparan mengenai faktor apa saja yang menggerakkan naik-turunnya beban listrik di wilayah tersebut.</p>
+<p>Ringkasan Singkat: Model berhasil memprediksi beban listrik harian dengan memanfaatkan kombinasi cerdas antara tren kebiasaan masyarakat di masa lalu (Lags) dan anomali cuaca hari ini (Temperature).</p>
+</li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="analisis_randomf.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Laporan Analisis Klasifikasi Prediksi Pendapatan (Dataset Adult)</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisa-prediksi-tentang-apa">1. Analisa prediksi tentang apa?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagaimana-bentuk-data-trainingnya-apa-saja-input-dan-outputnya">2. Bagaimana bentuk data trainingnya (apa saja input dan         outputnya)?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-lag">3. Apa itu lag?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jelaskan-proses-analysis-yang-dilakukan-dari-kasus-diatas">4. Jelaskan proses analysis yang dilakukan dari kasus diatas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reproduct-ulang-kode-program">Reproduct ulang Kode Program</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
