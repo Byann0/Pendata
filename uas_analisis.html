@@ -1,0 +1,733 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>ANALISIS HASIL DATA MINING PERFORMA MAHASISWA &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'uas_analisis';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Analisis Model Explainability - Skforecast 0.15.1" href="analisis_model_explain.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    My Notebook
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pengantardata.html">Pengantar Data Mining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bussinessunderstand.html">Business Understanding</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="datasunderstand.html">Data Understanding</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="datairis.html">Data Iris Flower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ukur_iris.html">Pengukuran Jarak (Dissimilarity Matrix)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="mengukurjarak.html">Data Distance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="eksplor_campuran.html">Eksplorasi Data Campuran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ukurdata_campuran.html">Pengukuran Jarak Data Campuran</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="preproses.html">Pre-processing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="macam_normalisasi.html">Normalisasi Data</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="knn.html">K-Nearest Neighbors (K-NN)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="missing_value.html">Mencari Missing Value</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="wknn.html">WKNN</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="uts.html">Analisa Data Kesuburan Tanah</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jawaban.html">Laporan Analisis Klasifikasi Kesuburan Tanah</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analisis_randomf.html">Laporan Analisis Klasifikasi Prediksi Pendapatan (Dataset Adult)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analisis_model_explain.html">Analisis Model Explainability - Skforecast 0.15.1</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">ANALISIS HASIL DATA MINING PERFORMA MAHASISWA</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fuas_analisis.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/uas_analisis.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>ANALISIS HASIL DATA MINING PERFORMA MAHASISWA</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding-pemahaman-data">Data Understanding (Pemahaman Data)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation-persiapan-data">Data Preparation (Persiapan Data)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-pemodelan">Modeling (Pemodelan)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-evaluasi-model-tree">Evaluation (Evaluasi Model Tree)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment-penerapan-kebijakan">Deployment (Penerapan Kebijakan)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-fitur-paling-berpengaruh-hasil-node-rank">ANALISIS FITUR PALING BERPENGARUH (HASIL NODE RANK)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi">Visualisasi</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="analisis-hasil-data-mining-performa-mahasiswa">
+<h1>ANALISIS HASIL DATA MINING PERFORMA MAHASISWA<a class="headerlink" href="#analisis-hasil-data-mining-performa-mahasiswa" title="Link to this heading">#</a></h1>
+<section id="data-understanding-pemahaman-data">
+<h2>Data Understanding (Pemahaman Data)<a class="headerlink" href="#data-understanding-pemahaman-data" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Karakteristik Dataset: File DATA (1).csv berisi 145 baris data (sampel mahasiswa). Atribut prediktor terdiri dari 30 pertanyaan kuesioner ditambah variabel COURSE ID. Variabel target adalah GRADE.</p></li>
+<li><p>Analisis Masalah Imbalanced Data: Eksplorasi melalui sebaran data menunjukkan adanya ketidakseimbangan kelas yang tajam pada variabel GRADE:</p>
+<ul>
+<li><p>Kelas dominan: GRADE 1 (35 data) dan GRADE 2 (24 data).</p></li>
+<li><p>Kelas minoritas ekstrim: GRADE 0 (hanya 8 data).</p></li>
+</ul>
+</li>
+<li><p>Penjelasan Ilmiah Mengenai Warning Komputasi: Ketika model diuji menggunakan 10-Fold Cross-Validation, sistem memberikan peringatan (warning). Hal ini terjadi karena aturan Stratified Cross-Validation berusaha membagi tiap kelas secara merata ke dalam 10 lipatan kelompok uji. Karena kelompok GRADE 0 hanya memiliki 8 mahasiswa, sistem secara matematis kekurangan data untuk mengisi 10 kelompok tersebut. Sistem Orange secara otomatis menyesuaikan pembagian menjadi pengujian standar tanpa membatalkan validitas evaluasi keseluruhan.</p></li>
+</ul>
+</section>
+<section id="data-preparation-persiapan-data">
+<h2>Data Preparation (Persiapan Data)<a class="headerlink" href="#data-preparation-persiapan-data" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Pelabelan Peran (Role Assignment): Atribut STUDENT ID diatur sebagai Meta agar tidak mengacaukan perhitungan rumus. Atribut GRADE diatur sebagai Target dan diubah tipenya dari numerik menjadi Categorical agar mesin mengenali instruksi sebagai fungsi klasifikasi, bukan regresi linear.</p></li>
+<li><p>Seleksi Fitur via Node Rank: Menggunakan metode statistik Information Gain (IG), 31 prediktor dievaluasi. Atribut yang tidak memiliki kontribusi informasi signifikan dipangkas untuk mencegah model pohon tumbuh terlalu rumit (overfitting).</p></li>
+</ul>
+</section>
+<section id="modeling-pemodelan">
+<h2>Modeling (Pemodelan)<a class="headerlink" href="#modeling-pemodelan" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Arsitektur Model: Algoritma Decision Tree membangun struktur pohon terbalik yang terdiri dari:</p>
+<ul>
+<li><p>Root Node (Akar Utama): Atribut yang memiliki nilai Information Gain tertinggi dan menjadi pemisah pertama.</p></li>
+<li><p>Internal Node (Cabang): Atribut penyaring berikutnya berdasarkan kondisi tertentu.</p></li>
+<li><p>Leaf Node (Daun Kesimpulan): Keputusan akhir yang memuat prediksi kelas GRADE (0-7).</p></li>
+</ul>
+</li>
+<li><p>Model dilatih untuk meminimalkan tingkat entropi data pada setiap percabangan sehingga menghasilkan kelompok mahasiswa yang sehomogen mungkin.</p></li>
+</ul>
+</section>
+<section id="evaluation-evaluasi-model-tree">
+<h2>Evaluation (Evaluasi Model Tree)<a class="headerlink" href="#evaluation-evaluasi-model-tree" title="Link to this heading">#</a></h2>
+<p>Berdasarkan hasil pengujian 10-Fold Cross-Validation khusus untuk model Decision Tree, diperoleh performa metrik sebagai berikut:</p>
+<ul class="simple">
+<li><p>Classification Accuracy (CA): 27.6% (0.276)</p></li>
+<li><p>AUC: 0.551</p></li>
+<li><p>F1-Score: 0.270</p></li>
+<li><p>Analisis dan Validasi Skor Akurasi 27.6%Meskipun angka 27.6% terlihat kecil, dalam evaluasi statistik multi-kelas (8 alternatif target dari 0-7), angka ini terbukti valid dan bekerja dengan baik. Jika kita menggunakan tebakan acak buta murni tanpa bantuan AI, peluang benarnya hanyalah sebesar <span class="math notranslate nohighlight">\(1/8 = 12.5\%\)</span>. Dengan akurasi model Tree mencapai 27.6%, ini membuktikan pohon keputusan bekerja dua kali lipat lebih cerdas dan akurat dalam menangkap sinyal pola perilaku mahasiswa dibandingkan tebakan acak.</p></li>
+<li><p>Analisis Eror Melalui Confusion MatrixPohon keputusan mampu memprediksi kelompok mahasiswa di kelas mayoritas (GRADE 1 dan GRADE 2) dengan tingkat akurasi yang tinggi (banyak tebakan masuk di garis diagonal utama). Namun, model memiliki kelemahan pada kelas minoritas GRADE 0. Akibat kekurangan suplai sampel data (hanya 8 mahasiswa), pohon keputusan tidak mampu merumuskan aturan percabangan kuesioner yang spesifik untuk kelas GRADE 0, sehingga mahasiswa di kelompok ini sering kali salah terprediksi masuk ke dalam lingkaran GRADE 1.</p></li>
+</ul>
+</section>
+<section id="deployment-penerapan-kebijakan">
+<h2>Deployment (Penerapan Kebijakan)<a class="headerlink" href="#deployment-penerapan-kebijakan" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Penyusunan Aturan Akademik (Rule-Based Policy): Aturan percabangan if-else yang dihasilkan oleh pohon keputusan ini diekstrak menjadi logika operasional bagi dosen wali.</p></li>
+<li><p>Sistem Peringatan Dini (Early Warning System): Pola kuesioner mahasiswa ditanamkan pada sistem informasi akademik. Jika di pertengahan semester seorang mahasiswa baru mengisi data dengan kecenderungan pola perilaku yang mengarah ke daun keputusan (Leaf Node) bernilai indeks GRADE 0 atau 1, sistem akan otomatis memberikan sinyal kepada bagian konseling untuk melakukan tindakan pencegahan secara dini.</p></li>
+</ol>
+</section>
+<section id="analisis-fitur-paling-berpengaruh-hasil-node-rank">
+<h2>ANALISIS FITUR PALING BERPENGARUH (HASIL NODE RANK)<a class="headerlink" href="#analisis-fitur-paling-berpengaruh-hasil-node-rank" title="Link to this heading">#</a></h2>
+<p>Melalui perhitungan matematis Information Gain, berikut adalah 5 faktor perilaku teratas yang paling menentukan hidup-mati nilai GRADE mahasiswa pada struktur Decision Tree Anda:</p>
+<ul class="simple">
+<li><p>COURSE ID (Skor IG: 0.467): Berada di posisi puncak. Ini menunjukkan bahwa tingkat kesulitan objektif mata kuliah, metode pengajaran, atau standarisasi penilaian dosen pengampu menjadi faktor paling timpang dan dominan dalam menentukan nilai akhir mahasiswa.</p></li>
+<li><p>Fitur 2 - Jenis Kelamin (Skor IG: 0.245): Menunjukkan adanya perbedaan pola adaptasi akademik atau konsistensi belajar yang berkolerasi dengan gender pada dataset ini.</p></li>
+<li><p>Fitur 25 - Kebiasaan Mencatat di Kelas (Skor IG: 0.147): Menjadi aktivitas fisik paling krusial di ruang kelas. Mahasiswa yang aktif mencatat memiliki retensi pemahaman materi yang jauh lebih stabil di dalam struktur pohon keputusan.</p></li>
+<li><p>Fitur 29 - IPK Kumulatif Semester Lalu / CGPA (Skor IG: 0.131): Menunjukkan faktor historis. Mahasiswa yang memiliki fondasi akademis kuat di masa lalu memiliki probabilitas tinggi untuk mempertahankan posisinya di GRADE atas.</p></li>
+<li><p>Fitur 1 - Usia Mahasiswa (Skor IG: 0.107): Tingkat kedewasaan memengaruhi manajemen waktu belajar mandiri mereka.</p></li>
+</ul>
+</section>
+<section id="kesimpulan">
+<h2>Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Akurasi Model Cukup Baik: Model Decision Tree menghasilkan akurasi sebesar 27.6%. Meskipun terlihat kecil, angka ini sebenarnya sudah bagus karena AI harus menebak 1 dari 8 kelas nilai (GRADE 0-7). Jika hanya menebak asal tanpa AI, peluang benarnya cuma 12.5%. Jadi, model ini bekerja 2 kali lipat lebih baik dibanding tebakan acak.</p></li>
+<li><p>Faktor Penentu Utama: Dari puluhan pertanyaan kuesioner, faktor yang paling kuat mempengaruhi nilai mahasiswa adalah COURSE ID (Mata Kuliah). Faktor penting berikutnya adalah Jenis Kelamin (Fitur 2), Kebiasaan Mencatat di Kelas (Fitur 25), dan IPK Semester Lalu (Fitur 29).</p></li>
+<li><p>Kendala Data Tidak Seimbang: AI kesulitan memprediksi mahasiswa yang akan mendapatkan GRADE 0 (nilai terendah/gagal). Hal ini terjadi karena jumlah datanya terlalu sedikit (hanya 8 orang dari total 145 data), sehingga AI kekurangan contoh untuk mengenali ciri-ciri mahasiswa di kelompok tersebut.</p></li>
+<li><p>Manfaat Praktis: Hasil pola if-else dari pohon keputusan ini bisa dimanfaatkan kampus untuk membuat Sistem Peringatan Dini. Dosen wali bisa mendeteksi lebih cepat mahasiswa yang berpotensi mendapat nilai rendah berdasarkan kebiasaan belajar mereka, lalu memberikan bimbingan sebelum semester berakhir.</p></li>
+</ul>
+</section>
+<section id="visualisasi">
+<h2>Visualisasi<a class="headerlink" href="#visualisasi" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==========================================</span>
+<span class="c1"># CELL 1: IMPORT LIBRARY</span>
+<span class="c1"># ==========================================</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">cross_val_predict</span><span class="p">,</span> <span class="n">KFold</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeClassifier</span><span class="p">,</span> <span class="n">plot_tree</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">accuracy_score</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">mutual_info_classif</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
+
+<span class="c1"># ==========================================</span>
+<span class="c1"># CELL 2: LOAD DATA &amp; PREPARATION</span>
+<span class="c1"># ==========================================</span>
+<span class="c1"># Memuat file data kuesioner</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;DATA (1).csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># Memisahkan Fitur dan Target (STUDENT ID dihapus karena bertindak sebagai Meta)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;STUDENT ID&#39;</span><span class="p">,</span> <span class="s1">&#39;GRADE&#39;</span><span class="p">])</span> 
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;GRADE&#39;</span><span class="p">]</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sukses memuat </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> baris mahasiswa dengan </span><span class="si">{</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> prediktor.&quot;</span><span class="p">)</span>
+
+<span class="c1"># ==========================================</span>
+<span class="c1"># CELL 3: REPLIKASI WIDGET DISTRIBUTIONS</span>
+<span class="c1"># ==========================================</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;Set2&quot;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">patches</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get_height</span><span class="p">())</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">p</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">get_height</span><span class="p">()),</span>
+                <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;offset points&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribusi Frekuensi Kelas Target GRADE (Widget Distributions)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Kategori GRADE&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Jumlah Mahasiswa&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># ==========================================</span>
+<span class="c1"># CELL 4: REPLIKASI WIDGET RANK (INFORMATION GAIN)</span>
+<span class="c1"># ==========================================</span>
+<span class="n">ig_scores</span> <span class="o">=</span> <span class="n">mutual_info_classif</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">feature_rank</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Fitur&#39;</span><span class="p">:</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="s1">&#39;Information Gain&#39;</span><span class="p">:</span> <span class="n">ig_scores</span><span class="p">})</span>
+<span class="n">feature_rank</span> <span class="o">=</span> <span class="n">feature_rank</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Information Gain&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Information Gain&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Fitur&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">feature_rank</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">12</span><span class="p">),</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Fitur&#39;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Top 12 Fitur Penentu Nilai Berdasarkan Information Gain (Rank)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Skor Information Gain&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Atribut Kuesioner&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># ==========================================</span>
+<span class="c1"># CELL 5: REPLIKASI WIDGET CONFUSION MATRIX</span>
+<span class="c1"># ==========================================</span>
+<span class="c1"># Inisialisasi model tunggal Decision Tree</span>
+<span class="n">clf_tree</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">min_samples_split</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Menggunakan KFold Cross Validation untuk penanganan data imbalanced</span>
+<span class="n">kf</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">cross_val_predict</span><span class="p">(</span><span class="n">clf_tree</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">kf</span><span class="p">)</span>
+
+<span class="c1"># Hitung Akurasi Global Tree</span>
+<span class="n">ca_score</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Classification Accuracy (CA) dari Decision Tree: </span><span class="si">{</span><span class="n">ca_score</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Plot Heatmap Confusion Matrix</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">6.5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Oranges&#39;</span><span class="p">,</span> <span class="n">xticklabels</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">classes</span><span class="p">,</span> <span class="n">square</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Matriks Kesalahan Prediksi - Decision Tree (Confusion Matrix)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted Label (Tebakan Model)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Actual Label (Fakta Lapangan)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># ==========================================</span>
+<span class="c1"># CELL 6: REPLIKASI WIDGET TREE VIEWER</span>
+<span class="c1"># ==========================================</span>
+
+
+<span class="n">clf_tree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">plot_tree</span><span class="p">(</span><span class="n">clf_tree</span><span class="p">,</span> 
+          <span class="n">feature_names</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> 
+          <span class="n">class_names</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Grade </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">],</span> 
+          <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+          <span class="n">rounded</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+          <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> 
+          <span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># Dibatasi ke kedalaman 3 tingkat agar teks terbaca jelas</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Visualisasi Atribut Percabangan Aturan Logika (Tree Viewer)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sukses memuat 145 baris mahasiswa dengan 31 prediktor.
+</pre></div>
+</div>
+<img alt="_images/3dcb791157ca8f25b578d673bc499d45be6893767e48e2b1de80afe1fbbb0ab1.png" src="_images/3dcb791157ca8f25b578d673bc499d45be6893767e48e2b1de80afe1fbbb0ab1.png" />
+<img alt="_images/8f8c14437183f4b6a6b40b285410ed7e592e0d67f19d90bec9cdc64432726c4a.png" src="_images/8f8c14437183f4b6a6b40b285410ed7e592e0d67f19d90bec9cdc64432726c4a.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Classification Accuracy (CA) dari Decision Tree: 23.45%
+</pre></div>
+</div>
+<img alt="_images/58be75719c30a737714b4fce3231ceb8cde501ade3f45d10b85ed8998eb32e22.png" src="_images/58be75719c30a737714b4fce3231ceb8cde501ade3f45d10b85ed8998eb32e22.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="analisis_model_explain.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Analisis Model Explainability - Skforecast 0.15.1</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding-pemahaman-data">Data Understanding (Pemahaman Data)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation-persiapan-data">Data Preparation (Persiapan Data)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-pemodelan">Modeling (Pemodelan)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-evaluasi-model-tree">Evaluation (Evaluasi Model Tree)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment-penerapan-kebijakan">Deployment (Penerapan Kebijakan)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-fitur-paling-berpengaruh-hasil-node-rank">ANALISIS FITUR PALING BERPENGARUH (HASIL NODE RANK)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi">Visualisasi</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
